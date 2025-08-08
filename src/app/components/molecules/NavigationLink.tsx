@@ -20,7 +20,7 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   return (
     <Link
       href={href}
-      className={`flex items-center gap-2 hover:underline hover:underline-offset-4 ${className}`}
+      className={`flex items-center gap-2 hover:underline hover:underline-offset-4 font-raleway font-semibold ${className}`}
       target="_blank"
       rel="noopener noreferrer"
     >

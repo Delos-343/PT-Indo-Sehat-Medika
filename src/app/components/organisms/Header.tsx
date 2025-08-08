@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Right: Navigation Links */}
-      <nav className="hidden md:flex space-x-8 text-blue-900 --font-raleway">
+      <nav className="hidden md:flex space-x-8 text-blue-900">
         <NavigationLink href="/" label="Home" />
         <NavigationLink href="/about" label="About Us" />
         <NavigationLink href="/services" label="Our Services" />

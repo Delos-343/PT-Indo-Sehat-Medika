@@ -12,11 +12,11 @@ export const HomeTemplate: React.FC<HomeTemplateProps> = ({
   description,
 }) => {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-16 p-10 bg-gray-100">
+    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-16 px-5 py-10 bg-gray-100">
       <nav className="flex gap-[24px] flex-wrap items-center justify-center w-full">
         <Header />
       </nav>
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+      <main className="w-full flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <HeroSection title={title} description={description} />
       </main>
     </div>
