@@ -18,7 +18,7 @@ export const SeekCard: React.FC<SeekCardProps> = ({ title, description, imageSrc
                 <CardTitle>
                     {title}
                 </CardTitle>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm leading-relaxed text-[var(--color-primary-dark)] font-light">
                     {description}
                 </p>
             </div>

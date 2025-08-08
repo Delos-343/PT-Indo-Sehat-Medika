@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from '../organisms/Navbar';
 import { Hero } from '../organisms/Hero';
 import { Second } from '../organisms/Second';
+import { Footer } from '../organisms/Footer';
 
 interface HomeTemplateProps {
   title?: string;
@@ -18,6 +19,7 @@ export const HomeTemplate: React.FC<HomeTemplateProps> = ({
       <main className="w-full flex flex-col gap-[32px] row-start-2 items-center">
         <Hero title={title} />
         <Second />
+        <Footer />
       </main>
     </div>
   );
