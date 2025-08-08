@@ -1,35 +1,67 @@
+'use client';
+
 import React from 'react';
 import { NavigationLink } from '../molecules/NavigationLink';
-import { Input } from '../atoms/Input';
 import { LogoWithText } from '../atoms/LogoWithText';
+import { FiSearch, FiHome, FiCheckCircle, FiChevronDown, FiUser } from 'react-icons/fi';
 
 export const Navbar: React.FC = () => {
   return (
-    <header className="flex items-center justify-between px-6 py-3 bg-gray-100 shadow-md sticky top-0 z-50 w-full rounded-3xl">
-      {/* Left: Logo */}
-      <div className="flex-shrink-0">
-        <LogoWithText />
-      </div>
+    <>
+      <header
+        className="
+          sticky top-0 z-50 flex items-center justify-between
+          w-full px-6 py-3
+          bg-[var(--color-bg-primary)]
+          rounded-3xl shadow-sm
+        "
+      >
+        {/* Logo + divider */}
+        <div className="flex items-center gap-4 flex-shrink-0">
+          <LogoWithText />
+          <div className="hidden md:block h-8 border-l border-[var(--color-primary-dark)]" />
+        </div>
 
-      {/* Center: Search Input */}
-      <div className="flex-grow max-w-lg mx-6">
-        <Input
-          type="text"
-          placeholder="Search your topic"
-          className="w-full"
-        />
-      </div>
+        {/* Search */}
+        <div className="flex-grow max-w-md mx-6">
+          <div className="flex items-center gap-2 bg-gray-100/80 px-4 py-2 rounded-full">
+            <FiSearch className="text-[var(--color-primary)] text-lg" />
+            <input
+              type="search"
+              placeholder="Search Here..."
+              className="w-full bg-transparent text-sm text-gray-600 placeholder-gray-400 outline-none"
+            />
+          </div>
+        </div>
 
-      {/* Right: Navigation Links */}
-      <nav className="hidden md:flex space-x-8 text-blue-900">
-        <NavigationLink href="/" label="Home" />
-        <NavigationLink href="/about" label="About Us" />
-        <NavigationLink href="/services" label="Our Services" />
-        <NavigationLink href="/login" label="Login" />
-      </nav>
-
-      {/* Mobile menu button (optional for now) */}
-      {/* Could be added later for full responsiveness */}
-    </header>
+        {/* Nav links */}
+        <nav className="hidden md:flex items-center space-x-8">
+          <NavigationLink
+            href="/"
+            label="Home"
+            icon={<FiHome className="text-[var(--color-primary-dark)] text-lg" />}
+            className="text-[var(--color-primary-dark)]"      // dark navy
+          />
+          <NavigationLink
+            href="/about"
+            label="About Us"
+            icon={<FiCheckCircle className="text-[var(--color-primary)] text-lg" />}
+            className="text-[var(--color-primary)]"          // bright cyan
+          />
+          <NavigationLink
+            href="/services"
+            label="Our Services"
+            icon={<FiChevronDown className="text-[var(--color-primary)] text-lg" />}
+            className="text-[var(--color-primary)]"          // bright cyan
+          />
+          <NavigationLink
+            href="/login"
+            label="Login"
+            icon={<FiUser className="text-[var(--color-primary)] text-lg" />}
+            className="text-[var(--color-primary)]"          // bright cyan
+          />
+        </nav>
+      </header>
+    </>
   );
 };
