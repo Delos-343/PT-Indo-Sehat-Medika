@@ -3,18 +3,11 @@
 import React, { useState } from 'react';
 import { NavigationLink } from '../molecules/NavigationLink';
 import { LogoWithText } from '../atoms/LogoWithText';
-import {
-  FiSearch,
-  FiHome,
-  FiCheckCircle,
-  FiChevronDown,
-  FiUser,
-  FiMenu,
-  FiX,
-} from 'react-icons/fi';
+import { FiSearch, FiMenu, FiX, FiCheckCircle, FiChevronDown, FiUser, FiHome } from 'react-icons/fi';
+import { DropDown } from '../atoms/DropDown';
 
 export const Navbar: React.FC = () => {
-  
+
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -23,7 +16,7 @@ export const Navbar: React.FC = () => {
         className="
           w-full sticky top-0 z-50
           bg-[var(--color-bg-primary)] rounded-3xl shadow-sm
-          px-4 sm:px-6 md:px-8 py-3 relative
+          px-4 sm:px-6 md:px-8 py-3
         "
       >
         <div className="flex items-center justify-between">
@@ -88,43 +81,8 @@ export const Navbar: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile dropdown — only rendered when open */}
-      {mobileOpen && (
-        <div
-          className="
-            md:hidden absolute inset-x-0 top-[4.5rem]
-            bg-[var(--color-bg-primary)] shadow-lg
-          "
-          style={{ zIndex: 1000 }}
-        >
-          <nav className="flex flex-col px-4 py-4 space-y-3">
-            <NavigationLink
-              href="/"
-              label="Home"
-              icon={<FiHome className="text-[var(--color-primary-dark)] text-lg" />}
-              className="text-[var(--color-primary-dark)]"
-            />
-            <NavigationLink
-              href="/about"
-              label="About Us"
-              icon={<FiCheckCircle className="text-[var(--color-primary)] text-lg" />}
-              className="text-[var(--color-primary)]"
-            />
-            <NavigationLink
-              href="/services"
-              label="Our Services"
-              icon={<FiChevronDown className="text-[var(--color-primary)] text-lg" />}
-              className="text-[var(--color-primary)]"
-            />
-            <NavigationLink
-              href="/login"
-              label="Login"
-              icon={<FiUser className="text-[var(--color-primary)] text-lg" />}
-              className="text-[var(--color-primary)]"
-            />
-          </nav>
-        </div>
-      )}
+      {/* Import MobileMenu */}
+      <DropDown isOpen={mobileOpen} />
     </>
   );
 };
