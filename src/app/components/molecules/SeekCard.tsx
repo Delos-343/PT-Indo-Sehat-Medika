@@ -13,7 +13,7 @@ interface SeekCardProps {
 
 export const SeekCard: React.FC<SeekCardProps> = ({ title, description, imageSrc, imageAlt = '' }) => (
     <>
-        <div className="flex flex-col justify-between bg-white rounded-2xl p-6 shadow-md h-full">
+        <div className="w-full flex flex-col justify-between bg-[var(--color-bg-primary)] rounded-2xl p-6 shadow-md h-full">
             <div>
                 <CardTitle>
                     {title}
@@ -26,9 +26,9 @@ export const SeekCard: React.FC<SeekCardProps> = ({ title, description, imageSrc
                 <Image
                     src={imageSrc}
                     alt={imageAlt}
-                    width={120}
-                    height={120}
-                    className="object-contain max-h-[80px]"
+                    width={343}
+                    height={343}
+                    className="relative object-contain overflow-visible max-h-24"
                 />
             </div>
         </div>
