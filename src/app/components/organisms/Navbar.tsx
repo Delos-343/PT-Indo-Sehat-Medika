@@ -14,16 +14,16 @@ import {
 } from 'react-icons/fi';
 
 export const Navbar: React.FC = () => {
+  
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <>
       <header
         className="
-          w-full
-          sticky top-0 z-50
+          w-full sticky top-0 z-50
           bg-[var(--color-bg-primary)] rounded-3xl shadow-sm
-          px-4 sm:px-6 md:px-8 py-3
+          px-4 sm:px-6 md:px-8 py-3 relative
         "
       >
         <div className="flex items-center justify-between">
@@ -74,25 +74,27 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden text-[var(--color-primary-dark)] text-2xl p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            type="button"
+            className="md:hidden text-[var(--color-primary-dark)] text-2xl p-2 z-50"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setMobileOpen((prev) => !prev);
+            }}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
+      </header>
 
-        {/* Mobile dropdown */}
+      {/* Mobile dropdown — only rendered when open */}
+      {mobileOpen && (
         <div
-          className={`
-            md:hidden
-            absolute inset-x-0
-            top-full
-            bg-[var(--color-bg-primary)]
-            shadow-lg
-            transform transition-transform duration-300
-            ${mobileOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
-          `}
+          className="
+            md:hidden absolute inset-x-0 top-[4.5rem]
+            bg-[var(--color-bg-primary)] shadow-lg
+          "
           style={{ zIndex: 1000 }}
         >
           <nav className="flex flex-col px-4 py-4 space-y-3">
@@ -122,7 +124,7 @@ export const Navbar: React.FC = () => {
             />
           </nav>
         </div>
-      </header>
+      )}
     </>
   );
 };
