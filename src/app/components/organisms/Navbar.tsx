@@ -3,9 +3,9 @@ import { NavigationLink } from '../molecules/NavigationLink';
 import { Input } from '../atoms/Input';
 import { LogoWithText } from '../atoms/LogoWithText';
 
-export const Header: React.FC = () => {
+export const Navbar: React.FC = () => {
   return (
-    <header className="flex items-center justify-between px-6 py-3 bg-gray-100 shadow-md sticky top-0 z-50 w-full rounded-lg">
+    <header className="flex items-center justify-between px-6 py-3 bg-gray-100 shadow-md sticky top-0 z-50 w-full rounded-3xl">
       {/* Left: Logo */}
       <div className="flex-shrink-0">
         <LogoWithText />

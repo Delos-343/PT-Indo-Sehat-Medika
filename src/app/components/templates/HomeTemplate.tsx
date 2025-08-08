@@ -1,23 +1,21 @@
 import React from 'react';
-import { HeroSection } from '../organisms/HeroSection';
-import { Header } from '../organisms/Header';
+import { Navbar } from '../organisms/Navbar';
+import { Hero } from '../organisms/Hero';
 
 interface HomeTemplateProps {
   title?: string;
-  description?: string;
 }
 
 export const HomeTemplate: React.FC<HomeTemplateProps> = ({
   title,
-  description,
 }) => {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-16 px-5 py-10 bg-gray-100">
+    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen gap-16 px-5 sm:px-20 py-10 bg-gray-100">
       <nav className="flex gap-[24px] flex-wrap items-center justify-center w-full">
-        <Header />
+        <Navbar />
       </nav>
-      <main className="w-full flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <HeroSection title={title} description={description} />
+      <main className="w-full flex flex-col gap-[32px] row-start-2 items-center">
+        <Hero title={title} />
       </main>
     </div>
   );
