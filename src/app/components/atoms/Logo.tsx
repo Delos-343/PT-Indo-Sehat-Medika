@@ -8,16 +8,15 @@ type LogoProps = {
 export const Logo: React.FC<LogoProps> = ({ className = '' }) => {
   return (
     <>
-      <div className={`relative h-16 overflow-hidden flex items-center ${className}`}>
-        <div className="relative w-[180px] h-[80px] -mt-2"> {/* slightly taller than navbar */}
-          <Image
-            src="/logo/logo.png"
-            alt="Company logo"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
+      <div className="h-16 flex items-center px-4">
+        <Image
+          src="/logo/logo.png"
+          alt="company logo"
+          width={270}
+          height={57}
+          className="h-full w-auto object-contain py-0 my-0"
+          priority
+        />
       </div>
     </>
   );
