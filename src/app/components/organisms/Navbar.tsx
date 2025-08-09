@@ -17,7 +17,7 @@ export const Navbar: React.FC = () => {
         className="
           w-full sticky top-0 z-50
           bg-[var(--color-bg-primary)] rounded-3xl shadow-sm
-          px-4 sm:px-6 md:px-8 py-1
+          px-4 sm:px-6 md:px-8
         "
       >
         <div className="flex items-center justify-between">

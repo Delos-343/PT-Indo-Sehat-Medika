@@ -1,5 +1,4 @@
 import React from 'react';
-import { Input } from './Input';
 import { FiSearch } from 'react-icons/fi';
 
 interface SearchInputProps {
@@ -19,11 +18,11 @@ export const SearchInput: React.FC<SearchInputProps> = ({
     <>
       <div className="flex-grow mx-4 md:mx-6 border-l-2">
         <div className="flex items-center bg-gray-100/80 px-4 py-2 rounded-full w-full md:max-w-md border-2 border-gray-300">
-          <FiSearch className="text-[var(--color-bg-primary)] bg-[var(--color-primary)] text-lg flex-shrink-0 p-3 rounded-full" />
+          <FiSearch className="bg-[var(--color-primary)] text-lg flex-shrink-0 p-2 rounded-full" size={30} />
           <input
             type="search"
             placeholder="Search . . ."
-            className="ml-2 w-full bg-transparent text-sm text-gray-600 placeholder-gray-300 outline-none"
+            className="ml-2 w-full bg-transparent text-sm text-[var(--color-primary)] placeholder-gray-400 outline-none"
           />
         </div>
       </div>
