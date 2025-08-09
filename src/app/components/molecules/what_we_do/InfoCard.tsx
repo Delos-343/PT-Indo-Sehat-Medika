@@ -49,7 +49,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         >
           {/* Decorative big mark (right side) */}
           <div
-            className="absolute right-6 top-8 pointer-events-none transform -translate-y-2 opacity-10"
+            className="absolute right-6 top-8 pointer-events-none transform -translate-y-2 opacity-90"
             aria-hidden="true"
           >
             <CaduceusIcon width={220} height={220} />
