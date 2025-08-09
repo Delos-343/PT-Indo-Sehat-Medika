@@ -1,7 +1,6 @@
 "use client";
 
 import { data } from "./data/teamCards";
-import * as Icons from "react-icons/fa";
 import TeamCard from "../molecules/team/TeamCard";
 
 export default function Team() {
