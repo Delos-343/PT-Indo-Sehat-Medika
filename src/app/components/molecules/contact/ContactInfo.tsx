@@ -20,7 +20,7 @@ export const ContactInfo: React.FC = () => {
                 <span className="w-10 h-10 rounded-full flex items-center justify-center text-[var(--color-bg-primary)] text-lg">
                   {it.icon}
                 </span>
-                <span className="text-[var(--color-bg-primary)] text-center sm:text left text-xs sm:text-lg">
+                <span className="text-[var(--color-bg-primary)] text-center sm:text left text-xs sm:text-lg ml-3">
                   {it.label}
                 </span>
               </div>
