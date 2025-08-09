@@ -30,7 +30,9 @@ export const FooterLink: React.FC = () => {
         </div>
 
         {/* Logo center */}
-        <LogoWithText />
+        <div className="my-8">
+          <LogoWithText />
+        </div>
 
         {/* Copyright */}
         <p className="text-sm text-[var(--color-primary-dark)]">
