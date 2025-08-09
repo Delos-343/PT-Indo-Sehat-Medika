@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { NavigationLink } from '../molecules/NavigationLink';
+import { NavigationLink } from '../molecules/navigation/NavigationLink';
 import { FiMenu, FiX, FiCheckCircle, FiChevronDown, FiUser, FiHome } from 'react-icons/fi';
-import { DropDown } from '../atoms/DropDown';
-import { Logo } from '../atoms/Logo';
-import { SearchInput } from '../atoms/SearchInput';
+import { DropDown } from '../atoms/navigation/DropDown';
+import { Logo } from '../atoms/navigation/Logo';
+import { SearchInput } from '../atoms/navigation/SearchInput';
 
 export const Navbar: React.FC = () => {
 

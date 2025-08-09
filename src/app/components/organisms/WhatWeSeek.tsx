@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { SeekCard } from '../molecules/SeekCard';
+import { SeekCard } from '../molecules/second/SeekCard';
 import data from './data/seekCards.json'; // adjust relative path if needed
 
 type CardItem = {
@@ -14,7 +14,7 @@ type CardItem = {
   imageHeight?: number;
 };
 
-export const Second: React.FC = () => {
+export const WhatWeSeek: React.FC = () => {
   
   const list = data as CardItem[];
 

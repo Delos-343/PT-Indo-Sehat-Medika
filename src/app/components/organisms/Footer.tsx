@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { FiMail, FiPhone, FiInstagram } from 'react-icons/fi';
-import { FooterLink } from '../molecules/FooterLink';
-import { SocialIcon } from '../atoms/SocialIcons';
+import { FooterLink } from '../molecules/footer/FooterLink';
+import { SocialIcon } from '../atoms/footer/SocialIcons';
 
 export const Footer: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { NavigationLink } from '../molecules/NavigationLink';
+import { NavigationLink } from '../../molecules/navigation/NavigationLink';
 import {
   FiHome,
   FiCheckCircle,
