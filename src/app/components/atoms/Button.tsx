@@ -17,6 +17,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   className = '',
 }) => {
+
   const baseClasses = 'font-medium rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variantClasses = {
@@ -40,12 +41,14 @@ export const Button: React.FC<ButtonProps> = ({
   ].filter(Boolean).join(' ');
 
   return (
-    <button
-      className={classes}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {children}
-    </button>
+    <>
+      <button
+        className={classes}
+        onClick={onClick}
+        disabled={disabled}
+      >
+        {children}
+      </button>
+    </>
   );
 };

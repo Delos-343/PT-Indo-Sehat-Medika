@@ -24,7 +24,6 @@ export const Navbar: React.FC = () => {
           <div className="flex-shrink-0">
             <LogoText />
           </div>
-
           {/* Search (always visible) */}
           <div className="flex-grow mx-4 md:mx-6">
             <div className="flex items-center bg-gray-100/80 px-3 py-2 rounded-full w-full md:max-w-md">
@@ -36,7 +35,6 @@ export const Navbar: React.FC = () => {
               />
             </div>
           </div>
-
           {/* Desktop Links */}
           <nav className="hidden md:flex items-center space-x-6">
             <NavigationLink
@@ -64,7 +62,6 @@ export const Navbar: React.FC = () => {
               className="text-[var(--color-primary)]"
             />
           </nav>
-
           {/* Mobile Hamburger */}
           <button
             type="button"
@@ -80,7 +77,6 @@ export const Navbar: React.FC = () => {
           </button>
         </div>
       </header>
-
       {/* Import MobileMenu */}
       <DropDown isOpen={mobileOpen} />
     </>

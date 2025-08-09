@@ -17,13 +17,15 @@ export const Logo: React.FC<LogoProps> = ({
   };
 
   return (
-    <Image
-      className={`${sizeClasses[size]} dark:invert ${className}`}
-      src="/next.svg"
-      alt="Next.js logo"
-      width={180}
-      height={38}
-      priority
-    />
+    <>
+      <Image
+        className={`${sizeClasses[size]} dark:invert ${className}`}
+        src="/next.svg"
+        alt="Next.js logo"
+        width={180}
+        height={38}
+        priority
+      />
+    </>
   );
 };

@@ -12,7 +12,6 @@ export const Footer: React.FC = () => {
         <div className="mx-auto flex flex-col items-center space-y-8">
             {/* Navigation + Logo + Copyright */}
             <FooterLink />
-
             {/* Social Media Icons */}
             <div className="flex gap-6">
               <SocialIcon href="mailto:info@indosehatmedika.com" icon={<FiMail />} label="Email" />

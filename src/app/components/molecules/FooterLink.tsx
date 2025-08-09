@@ -28,12 +28,10 @@ export const FooterLink: React.FC = () => {
             </Link>
             ))}
         </div>
-
         {/* Logo center */}
         <div className="my-8">
           <LogoText />
         </div>
-
         {/* Copyright */}
         <p className="text-sm text-[var(--color-primary-dark)]">
             © 2025 PT INDO SEHAT MEDIKA. <span className="ml-1"> All rights reserved. </span>

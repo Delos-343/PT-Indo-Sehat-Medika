@@ -29,17 +29,14 @@ export const Hero: React.FC<HeroProps> = ({
           background: 'linear-gradient(to right, rgba(55,196,226,0.5), rgba(15,75,138,0.8))',
         }}
       />
-
       {/* Centered content */}
       <div className="relative z-10 flex items-center justify-center h-full px-4 sm:px-6 md:px-12 text-[var(--color-bg-primary)]">
         <div className="inline-block text-center">
           <div className="flex flex-col items-center justify-center space-y-16">
-
             {/* Title */}
             <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-8xl leading-tight font-extrabold mb-24">
               {title}
             </h1>
-
             {/* Icon labels row */}
             <div className="w-full flex flex-col items-center gap-y-4 sm:flex-row sm:justify-between sm:gap-x-12">
               <div className="flex items-center gap-3">
@@ -67,7 +64,6 @@ export const Hero: React.FC<HeroProps> = ({
                 <span className="text-lg">Hidup Lebih Sehat</span>
               </div>
             </div>
-
             {/* Tagline + CTA row */}
             <div className="w-full flex flex-col items-center gap-y-4 sm:flex-row sm:justify-between sm:gap-x-12">
               <p className="text-lg uppercase tracking-wide">
@@ -87,7 +83,6 @@ export const Hero: React.FC<HeroProps> = ({
                 </span>
               </div>
             </div>
-
           </div>
         </div>
       </div>
