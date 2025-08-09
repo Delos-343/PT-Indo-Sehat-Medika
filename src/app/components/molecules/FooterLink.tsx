@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { LogoWithText } from '../atoms/LogoWithText';
+import { LogoText } from '../atoms/LogoText';
 
 export const FooterLink: React.FC = () => {
 
@@ -31,12 +31,12 @@ export const FooterLink: React.FC = () => {
 
         {/* Logo center */}
         <div className="my-8">
-          <LogoWithText />
+          <LogoText />
         </div>
 
         {/* Copyright */}
         <p className="text-sm text-[var(--color-primary-dark)]">
-            © 2025 PT INDO SEHAT MEDIKA. <span className="ml-2">All rights reserved.</span>
+            © 2025 PT INDO SEHAT MEDIKA. <span className="ml-1"> All rights reserved. </span>
         </p>
         </div>
     </>
