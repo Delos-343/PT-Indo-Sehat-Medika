@@ -40,7 +40,7 @@ export const WhatWeDo: React.FC = () => {
                     {/* Cards grid: left big card spans 2 cols (md+) and right column holds feature + two small */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
                     {/* left: big lead card spans 2 columns on md+ */}
-                    <div className="md:col-span-2 fade-up h-full">
+                    <div className="md:col-span-2 fade-up">
                         {lead && (
                             <InfoCard
                                 id={lead.id}

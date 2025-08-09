@@ -4,6 +4,8 @@ import React from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
 import { BadgeNumber } from '../../atoms/what_we_do/BadgeNumber';
 import { CaduceusIcon } from '../../atoms/what_we_do/CaduceusIcon';
+import Image from 'next/image';
+import { MedicalCrossIcon } from '../../atoms/what_we_do/MedicalCrossIcon';
 
 export type InfoCardVariant = 'lead' | 'feature' | 'small';
 
@@ -35,7 +37,6 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   title,
   subtitle,
   description,
-  rightIcon,
   className = '',
 }) => {
   if (variant === 'lead') {
@@ -88,12 +89,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
           </div>
 
           {/* right side circular icon container */}
-          <div
-            className="ml-6 flex items-center justify-center w-20 h-20 rounded-full bg-white/10"
-            aria-hidden="true"
-          >
-            {rightIcon ?? <FiPlusCircle className="text-3xl text-white/90" />}
-          </div>
+          <MedicalCrossIcon />
         </article>
       </>
     );
