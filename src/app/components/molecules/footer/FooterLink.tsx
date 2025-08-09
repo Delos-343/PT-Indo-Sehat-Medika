@@ -33,7 +33,7 @@ export const FooterLink: React.FC = () => {
           <LogoFooter />
         </div>
         {/* Copyright */}
-        <p className="text-xs sm:text-md text-[var(--color-primary-dark)]">
+        <p className="text-xs sm:text-base text-[var(--color-primary-dark)]">
             © 2025 PT INDO SEHAT MEDIKA. All rights reserved.
         </p>
         </div>
