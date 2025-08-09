@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Empathy",
+    "description": "Kami Memahami Kebutuhan Pelanggan Dan Berusaha Memberikan Solusi Yang Memberikan Dampak Positif Terhadap Kesehatan Mereka.",
+    "imageSrc": "/assets/medical-stethoscope-with-heart.png",
+    "imageAlt": "Stethoscope",
+    "imageWidth": 360,
+    "imageHeight": 360
+  },
+  {
+    "title": "Quality",
+    "description": "Kami Berkomitmen Menyediakan Produk Dan Layanan Yang Memenuhi Standar Mutu Tertinggi.",
+    "imageSrc": "/assets/advanced-medical-equipment.png",
+    "imageAlt": "Medical equipment",
+    "imageWidth": 300,
+    "imageHeight": 300
+  },
+  {
+    "title": "Integrity",
+    "description": "Kami Menjunjung Tinggi Kejujuran, Transparansi, Dan Etika Dalam Setiap Aspek Bisnis.",
+    "imageSrc": "/assets/defibrillator.png",
+    "imageAlt": "Monitoring device",
+    "imageWidth": 320,
+    "imageHeight": 320
+  },
+  {
+    "title": "Innovation",
+    "description": "Kami Terus Mencari Cara Baru Dan Lebih Baik Untuk Melayani Pelanggan Melalui Teknologi Dan Pengembangan Produk Yang Berkelanjutan.",
+    "imageSrc": "/assets/medical-robot.png",
+    "imageAlt": "Robotic machine",
+    "imageWidth": 360,
+    "imageHeight": 360
+  },
+  {
+    "title": "Partnership",
+    "description": "Kami Membangun Hubungan Jangka Panjang Yang Saling Menguntungkan Dengan Mitra Bisnis, Pelanggan, Dan Komunitas.",
+    "imageSrc": "/assets/medical-shake-hands.png",
+    "imageAlt": "Handshake",
+    "imageWidth": 340,
+    "imageHeight": 340
+  }
+]

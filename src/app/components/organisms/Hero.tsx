@@ -26,7 +26,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to right, rgba(55,196,226,0.5), rgba(15,75,138,0.8))',
+          background: 'linear-gradient(to right, rgba(55,196,226,0.7), rgba(15,75,138,0.9))',
         }}
       />
       {/* Centered content */}
