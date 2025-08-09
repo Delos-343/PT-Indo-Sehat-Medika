@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { CardTitle } from '../../atoms/second/CardTitle';
+import { CardTitle } from '../../atoms/what_we_seek/CardTitle';
 
 interface SeekCardProps {
   title: string;
