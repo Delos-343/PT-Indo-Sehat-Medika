@@ -8,7 +8,7 @@ import { SocialIcon } from '../atoms/footer/SocialIcons';
 export const Footer: React.FC = () => {
   return (
     <>
-      <footer className="w-full bg-[var(--color-bg-primary)] pt-12 px-6">
+      <footer className="w-full bg-[var(--color-bg-primary)] pt-12 pb-2 px-6">
         <div className="mx-auto flex flex-col items-center space-y-8">
             {/* Navigation + Logo + Copyright */}
             <FooterLink />
