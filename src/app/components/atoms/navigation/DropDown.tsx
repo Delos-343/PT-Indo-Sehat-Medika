@@ -21,11 +21,11 @@ export const DropDown: React.FC<DropDownProps> = ({ isOpen }) => {
     <>
         <div
             className="
-                md:hidden absolute inset-x-0 top-[4.5rem]
-                bg-[var(--color-bg-primary)] shadow-lg z-50
+                md:hidden absolute inset-x-0 top-0
+                bg-[var(--color-bg-primary)] shadow-lg z-20
             "
         >
-            <nav className="flex flex-col px-4 py-4 space-y-3">
+            <nav className="flex flex-col px-4 pt-24 pb-4 space-y-4">
                 <NavigationLink
                     href="/"
                     label="Home"
