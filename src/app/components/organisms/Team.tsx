@@ -7,7 +7,7 @@ import TeamCard from "../molecules/team/TeamCard";
 export default function Team() {
   return (
     <>
-        <section className="w-full bg-[var(--color-bg-primary)]">
+        <section className="w-full bg-transparent">
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-right">
                     Meet Our Team

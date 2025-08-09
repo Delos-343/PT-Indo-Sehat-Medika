@@ -19,7 +19,7 @@ export const WhatWeSeek: React.FC = () => {
 
   return (
     <>
-      <section className="w-full py-20 bg-[var(--color-bg-primary)]">
+      <section className="w-full py-20 bg-transparent">
         <div className="w-full mx-auto px-6 lg:px-0">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-left">
             What We Seek

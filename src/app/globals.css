@@ -8,8 +8,6 @@
 
 
 @theme inline {
-  --color-background: var(--color-bg-primary);
-  --color-foreground: var(--color-primary);
   --font-raleway: var(--font-raleway);
   --font-poppins: var(--font-poppins);
 }
@@ -26,8 +24,7 @@ body {
   padding: 0;
   width: full;
   height: full;
-  background: var(--color-background);
-  color: var(--foreground);
+  background: var(--color-bg-primary);
   -webkit-font-smoothing: antialiased;
   font-family: 'Raleway', 'Poppins', system-ui, sans-serif;
 }
