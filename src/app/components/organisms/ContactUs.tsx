@@ -18,7 +18,7 @@ export const ContactUs: React.FC = () => {
                         relative bg-gradient-to-t from-[rgba(55,196,226,1.0)] to-[rgba(15,75,138,0.9)]
                         rounded-3xl overflow-hidden
                         shadow-2xl
-                        p-4 md:p-0
+                        p-4 sm:p-0
                     "
                     style={{
                         background: 'var(--color-primary-dark)',
@@ -26,7 +26,7 @@ export const ContactUs: React.FC = () => {
                 >
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                         {/* left - contact info */}
-                        <div className="md:col-span-4 bg-[rgba(255,255,255,0.04)] rounded-3xl p-6">
+                        <div className="md:col-span-4 bg-[rgba(255,255,255,0.04)] rounded-3xl p-6 md:p-24 lg:p-0">
                             <ContactInfo />
                         </div>
                         {/* right - the form */}
