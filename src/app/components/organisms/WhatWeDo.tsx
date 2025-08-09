@@ -14,20 +14,19 @@ export const WhatWeDo: React.FC = () => {
 
   return (
   <>
-    <section className="w-full bg-transparent py-16">
+    <section className="w-full bg-transparent py-16 m-auto sm:mt-48">
       <div className="mx-auto">
         {/* Top motif image */}
         <div className="relative">
           <div className="flex items-start justify-between gap-6">
-            <div className="flex-1" />
             <div className="flex-1 flex justify-end items-start">
-              <HexRow className="translate-y-1" />
+              <HexRow />
             </div>
           </div>
         </div>
         {/* Heading */}
         <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center md:text-right">
-          What We Do
+          What We <span className="text-[var(--color-primary)]"> Do </span>
         </h2>
         {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">

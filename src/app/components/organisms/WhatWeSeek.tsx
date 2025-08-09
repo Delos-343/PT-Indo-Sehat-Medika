@@ -22,7 +22,7 @@ export const WhatWeSeek: React.FC = () => {
       <section className="w-full py-20 bg-transparent">
         <div className="w-full mx-auto px-6 lg:px-0">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-left">
-            What We Seek
+            What We <span className="text-[var(--color-primary)]"> Seek </span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {list.map((item) => (

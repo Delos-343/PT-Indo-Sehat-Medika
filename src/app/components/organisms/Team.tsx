@@ -10,7 +10,7 @@ export default function Team() {
         <section className="w-full bg-transparent">
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-right">
-                    Meet Our Team
+                    Who <span className="text-[var(--color-primary)]"> We </span> Are
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                     {data.map((member) => (

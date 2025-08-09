@@ -10,7 +10,7 @@ export const ContactUs: React.FC = () => {
         <section className="w-full py-0 sm:py-20 my-16 sm:mt-0">
             <div className="w-full mx-auto px-4 sm:px-6 lg:px-0">
                 <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-left">
-                    Contact Us
+                    Let's Work <span className="text-[var(--color-primary)]"> Together </span>
                 </h2>
                 {/* card container */}
                 <div
