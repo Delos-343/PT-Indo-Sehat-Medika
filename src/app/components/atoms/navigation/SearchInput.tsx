@@ -16,9 +16,9 @@ export const SearchInput: React.FC<SearchInputProps> = ({
 }) => {
   return (
     <>
-      <div className="flex-grow mx-4 md:mx-6 border-l-2">
+      <div className="flex-grow mx-4 md:mx-6">
         <div className="flex items-center bg-gray-100/80 px-3 py-1 rounded-full w-full md:max-w-md border-1 border-gray-300">
-          <FiSearch className="bg-[var(--color-primary)] text-lg flex-shrink-0 p-2 rounded-full" size={30} />
+          <FiSearch className="bg-[var(--color-primary)] text-lg text-[var(--color-bg-primary)] flex-shrink-0 p-2 rounded-full" size={30} />
           <input
             type="search"
             placeholder="Search . . ."
