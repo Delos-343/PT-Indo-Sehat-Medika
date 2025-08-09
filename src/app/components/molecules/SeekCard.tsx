@@ -25,7 +25,7 @@ export const SeekCard: React.FC<SeekCardProps> = ({
   return (
     <>
         <article
-            className="relative flex flex-col bg-[var(--color-bg-primary)] rounded-3xl border border-gray-300 shadow-md overflow-hidden"
+            className="relative flex flex-col bg-[var(--color-bg-primary)] rounded-3xl border border-gray-300 shadow-md overflow-hidden h-[360px]"
             aria-label={title}
         >
             <div className="flex-1 px-6 pt-6">
@@ -36,9 +36,8 @@ export const SeekCard: React.FC<SeekCardProps> = ({
                     {description}
                 </p>
             </div>
-
             {/* Large clipped image area - image size controlled by props */}
-            <div className="relative w-full flex justify-center items-end overflow-hidden">
+            <div className="relative w-full grid grid-col justify-end items-start overflow-hidden">
                 <div
                     className="relative"
                     style={{

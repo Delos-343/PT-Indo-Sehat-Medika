@@ -1,31 +1,24 @@
 import Image from 'next/image';
 import React from 'react';
 
-interface LogoProps {
-  size?: 'sm' | 'md' | 'lg';
+type LogoProps = {
   className?: string;
-}
+};
 
-export const Logo: React.FC<LogoProps> = ({ 
-  size = 'md', 
-  className = '' 
-}) => {
-  const sizeClasses = {
-    sm: 'w-[120px] h-[25px]',
-    md: 'w-[180px] h-[38px]',
-    lg: 'w-[240px] h-[50px]',
-  };
-
+export const Logo: React.FC<LogoProps> = ({ className = '' }) => {
   return (
     <>
-      <Image
-        className={`${sizeClasses[size]} dark:invert ${className}`}
-        src="/public/logo/logo.png"
-        alt="company logo"
-        width={180}
-        height={38}
-        priority
-      />
+      <div className={`relative h-16 overflow-hidden flex items-center ${className}`}>
+        <div className="relative w-[180px] h-[80px] -mt-2"> {/* slightly taller than navbar */}
+          <Image
+            src="/logo/logo.png"
+            alt="Company logo"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+      </div>
     </>
   );
 };

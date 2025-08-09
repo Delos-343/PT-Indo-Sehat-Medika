@@ -22,7 +22,7 @@ export const Second: React.FC = () => {
     <>
       <section className="w-full py-20 bg-[var(--color-bg-primary)]">
         <div className="w-full mx-auto px-6 lg:px-0">
-          <h2 className="text-7xl font-extrabold text-[var(--color-primary-dark)] mb-12">
+          <h2 className="text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12">
             What We Seek
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">

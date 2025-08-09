@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { LogoText } from '../atoms/LogoText';
+import { LogoFooter } from '../atoms/LogoFooter';
 
 export const FooterLink: React.FC = () => {
 
@@ -29,8 +29,8 @@ export const FooterLink: React.FC = () => {
             ))}
         </div>
         {/* Logo center */}
-        <div className="my-8">
-          <LogoText />
+        <div className="my-1">
+          <LogoFooter />
         </div>
         {/* Copyright */}
         <p className="text-sm text-[var(--color-primary-dark)]">
