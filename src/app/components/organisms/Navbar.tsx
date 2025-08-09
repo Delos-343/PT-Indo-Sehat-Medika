@@ -5,6 +5,7 @@ import { NavigationLink } from '../molecules/NavigationLink';
 import { LogoText } from '../atoms/LogoText';
 import { FiSearch, FiMenu, FiX, FiCheckCircle, FiChevronDown, FiUser, FiHome } from 'react-icons/fi';
 import { DropDown } from '../atoms/DropDown';
+import { Logo } from '../atoms/Logo';
 
 export const Navbar: React.FC = () => {
 
@@ -22,7 +23,7 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <LogoText />
+            <Logo />
           </div>
           {/* Search (always visible) */}
           <div className="flex-grow mx-4 md:mx-6">

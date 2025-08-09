@@ -20,8 +20,8 @@ export const Logo: React.FC<LogoProps> = ({
     <>
       <Image
         className={`${sizeClasses[size]} dark:invert ${className}`}
-        src="/next.svg"
-        alt="Next.js logo"
+        src="/public/logo/logo.png"
+        alt="company logo"
         width={180}
         height={38}
         priority
