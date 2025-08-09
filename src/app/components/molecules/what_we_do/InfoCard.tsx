@@ -1,10 +1,8 @@
 'use client';
 
 import React from 'react';
-import { FiPlusCircle } from 'react-icons/fi';
 import { BadgeNumber } from '../../atoms/what_we_do/BadgeNumber';
 import { CaduceusIcon } from '../../atoms/what_we_do/CaduceusIcon';
-import Image from 'next/image';
 import { MedicalCrossIcon } from '../../atoms/what_we_do/MedicalCrossIcon';
 
 export type InfoCardVariant = 'lead' | 'feature' | 'small';
@@ -21,15 +19,6 @@ export interface InfoCardProps {
   className?: string;
 }
 
-/**
- * InfoCard - supports three visual variants:
- * - lead  : big cyan card with decorative caduceus on the right
- * - feature: large dark-blue card with a circular icon to the right
- * - small : small white cards with number badge and subtitle
- *
- * I adjusted invalid Tailwind classes (opacity-15 -> opacity-10), corrected image sizing via the CaduceusIcon props,
- * and ensured accessible labels.
- */
 export const InfoCard: React.FC<InfoCardProps> = ({
   id,
   number,
@@ -43,18 +32,17 @@ export const InfoCard: React.FC<InfoCardProps> = ({
     return (
       <>
         <article
-          className={`relative overflow-hidden rounded-[28px] p-8 bg-[var(--color-primary)] text-[var(--color-primary-dark)] ${className} shadow-lg`}
+          className={`relative overflow-hidden rounded-3xl p-8 bg-[var(--color-primary)] text-[var(--color-primary-dark)] ${className} shadow-lg h-full md:h-[324px]`}
           aria-labelledby={`card-${id || number}-title`}
           role="region"
         >
           {/* Decorative big mark (right side) */}
           <div
-            className="absolute right-6 top-8 pointer-events-none transform -translate-y-2 opacity-90"
+            className="absolute right-6 top-8 pointer-events-none transform -translate-y-2 opacity-10 sm:opacity-90"
             aria-hidden="true"
           >
             <CaduceusIcon width={220} height={220} />
           </div>
-
           <div className="flex flex-col h-full">
             <div className="mb-6">
               <BadgeNumber value={number ?? '00'} />
@@ -62,7 +50,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
             <h3 id={`card-${id || number}-title`} className="text-3xl font-extrabold leading-tight mb-4">
               {title}
             </h3>
-            {description && <p className="text-base leading-relaxed max-w-prose">{description}</p>}
+            {description && <p className="text-base leading-relaxed text-[var(--color-bg-primary)] max-w-prose">{description}</p>}
           </div>
         </article>
       </>
@@ -73,7 +61,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
     return (
       <>
         <article
-          className={`relative rounded-[28px] p-6 bg-[var(--color-primary-dark)] text-white ${className} shadow-lg flex items-center justify-between gap-4`}
+          className={`relative rounded-3xl p-6 bg-[var(--color-primary-dark)] text-white ${className} shadow-lg flex items-center justify-between gap-4`}
           aria-labelledby={`card-${id || number}-title`}
           role="region"
         >
@@ -82,14 +70,15 @@ export const InfoCard: React.FC<InfoCardProps> = ({
               {/* Badge on dark background — show as white by passing bg className */}
               <BadgeNumber value={number ?? '01'} className="bg-white text-[var(--color-primary-dark)]" />
             </div>
-            <h4 id={`card-${id || number}-title`} className="text-2xl font-extrabold text-[var(--color-accent)] mb-1">
+            <h4 id={`card-${id || number}-title`} className="text-2xl font-extrabold text-[var(--color-bg-primary)] mb-1">
               {title}
             </h4>
-            {subtitle && <div className="text-sm text-white/90">{subtitle}</div>}
+            {subtitle && <div className="text-sm text-[var(--color-primary)]">{subtitle}</div>}
           </div>
-
           {/* right side circular icon container */}
-          <MedicalCrossIcon />
+          <div className="absolute right-6 top-8 pointer-events-none transform -translate-y-5 opacity-10 sm:opacity-90">
+            <MedicalCrossIcon />
+          </div>
         </article>
       </>
     );
@@ -99,17 +88,17 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   return (
     <>
       <article
-        className={`relative rounded-[20px] p-6 bg-white text-[var(--color-primary-dark)] ${className} shadow-sm`}
+        className={`relative rounded-3xl p-6 text-[var(--color-primary-dark)] ${className} shadow-sm`}
         aria-labelledby={`card-${id || number}-title`}
         role="region"
       >
         <div className="mb-3">
-          <BadgeNumber value={number ?? '02'} className="bg-white" />
+          <BadgeNumber value={number ?? '02'} className="bg-transparent" />
         </div>
-        <h5 id={`card-${id || number}-title`} className="text-xl font-extrabold mb-2">
+        <h5 id={`card-${id || number}-title`} className="text-xl font-extrabold mb-2 text-[var(--color-primary)]">
           {title}
         </h5>
-        {subtitle && <div className="text-sm text-[var(--color-accent)]">{subtitle}</div>}
+        {subtitle && <div className="text-sm text-[var(--color-primary-dark)] font-light opacity-75">{subtitle}</div>}
       </article>
     </>
   );

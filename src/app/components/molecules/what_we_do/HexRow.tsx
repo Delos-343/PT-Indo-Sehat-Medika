@@ -4,8 +4,6 @@ import Image from 'next/image';
 import React from 'react';
 
 export const HexRow: React.FC<{ className?: string }> = ({ className = '' }) => {
-  // This is now a static motif image you've committed to the repo.
-  // Keep it aria-hidden since it's decorative on the layout.
   return (
     <>
       <div className={className} aria-hidden="true">

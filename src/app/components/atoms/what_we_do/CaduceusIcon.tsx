@@ -11,7 +11,6 @@ interface CaduceusIconProps {
 }
 
 export const CaduceusIcon: React.FC<CaduceusIconProps> = ({ className = '', ariaHidden = true, width = 220, height = 220 }) => {
-  // Decorative image — mark aria-hidden and empty alt to avoid screen reader noise.
   return (
     <>
         <div className={className} aria-hidden={ariaHidden}>
