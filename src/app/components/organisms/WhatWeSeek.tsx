@@ -1,8 +1,7 @@
-// src/app/components/organisms/Second.tsx
 'use client';
 
 import React from 'react';
-import { SeekCard } from '../molecules/second/SeekCard';
+import { SeekCard } from '../molecules/what_we_seek/SeekCard';
 import data from './data/seekCards.json'; // adjust relative path if needed
 
 type CardItem = {

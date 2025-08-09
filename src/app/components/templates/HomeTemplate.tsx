@@ -4,6 +4,7 @@ import { Hero } from '../organisms/Hero';
 import { WhatWeSeek } from '../organisms/WhatWeSeek';
 import { Footer } from '../organisms/Footer';
 import { ContactUs } from '../organisms/ContactUs';
+import Team from '../organisms/Team';
 
 interface HomeTemplateProps {
   title?: string;
@@ -21,6 +22,7 @@ export const HomeTemplate: React.FC<HomeTemplateProps> = ({
         <main className="w-full flex flex-col gap-[32px] row-start-2 items-center">
           <Hero title={title} />
           <WhatWeSeek />
+          <Team />
           <ContactUs />
           <Footer />
         </main>

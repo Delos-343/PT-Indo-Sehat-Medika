@@ -45,13 +45,13 @@ export const SeekCard: React.FC<SeekCardProps> = ({
                         height: `${Math.min(imageHeight, 600)}px`,
                     }}
                 >
-                <Image
-                    src={imageSrc}
-                    alt={imageAlt}
-                    fill
-                    className="object-cover"
-                    sizes={`${Math.min(imageWidth, 600)}px`}
-                />
+                    <Image
+                        src={imageSrc}
+                        alt={imageAlt}
+                        fill
+                        className="object-cover"
+                        sizes={`${Math.min(imageWidth, 600)}px`}
+                    />
                 </div>
             </div>
         </article>
