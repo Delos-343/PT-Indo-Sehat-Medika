@@ -1,10 +1,11 @@
+// WhatWeSeek.tsx
 'use client';
 
 import React from 'react';
 import { SeekCard } from '../../molecules/what_we_seek/SeekCard';
 import data from '../data/seekCards.json';
 import { StaggerOnScroll } from '../../atoms';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 type CardItem = {
   title: string;
@@ -15,7 +16,18 @@ type CardItem = {
   imageHeight?: number;
 };
 
+const headingVariants: Variants = {
+  hidden: { opacity: 0, x: -24 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+
 export const WhatWeSeek: React.FC = () => {
+  
   const list = data as CardItem[];
 
   return (
@@ -24,14 +36,16 @@ export const WhatWeSeek: React.FC = () => {
         <div className="w-full mx-auto px-6 lg:px-0">
           <motion.h2
             className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-left"
-            initial={{ opacity: 0, x: 0 }}
-            whileInView={{ opacity: 1, x: 24 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
+            variants={headingVariants}
           >
             What We <span className="text-[var(--color-primary)]"> Seek </span>
           </motion.h2>
+
           <StaggerOnScroll
-            staggerDelay={0.12}   // one-by-one timing
+            staggerDelay={0.12}
             duration={0.6}
             offset={120}
             once
