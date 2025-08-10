@@ -1,4 +1,3 @@
-// WhatWeSeek.tsx
 'use client';
 
 import React from 'react';
@@ -17,17 +16,16 @@ type CardItem = {
 };
 
 const headingVariants: Variants = {
-  hidden: { opacity: 0, x: -24 },
+  hidden: { opacity: 0, y: 12 }, // slide up into place
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 2.0, ease: [0.22, 1, 0.36, 1] },
+    y: 0,
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] }, // smooth, buttery
   },
 };
 
-
 export const WhatWeSeek: React.FC = () => {
-
+  
   const list = data as CardItem[];
 
   return (
@@ -40,6 +38,7 @@ export const WhatWeSeek: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={headingVariants}
+            style={{ willChange: 'transform, opacity' }} // hint browser to optimize
           >
             What We <span className="text-[var(--color-primary)]">Seek</span>
           </motion.h2>

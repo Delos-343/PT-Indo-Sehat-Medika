@@ -26,7 +26,7 @@ export const WhatWeDo: React.FC = () => {
         </div>
         {/* Heading */}
         <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center md:text-right">
-          What We <span className="text-[var(--color-primary)]">Do</span>
+          What We <span className="text-[var(--color-primary)]"> Do </span>
         </h2>
         {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
