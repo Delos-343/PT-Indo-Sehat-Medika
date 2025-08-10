@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { ContactInfo } from '../molecules/contact/ContactInfo';
-import { ContactForm } from '../molecules/contact/ContactForm';
+import { ContactInfo } from '../../molecules/contact/ContactInfo';
+import { ContactForm } from '../../molecules/contact/ContactForm';
 
 export const ContactUs: React.FC = () => {
   return (

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { FiMail, FiPhone, FiInstagram } from 'react-icons/fi';
-import { FooterLink } from '../molecules/footer/FooterLink';
-import { SocialIcon } from '../atoms/footer/SocialIcons';
+import { FooterLink } from '../../molecules/footer/FooterLink';
+import { SocialIcons } from '../../atoms/footer/SocialIcons';
 
 export const Footer: React.FC = () => {
   return (
@@ -14,9 +14,9 @@ export const Footer: React.FC = () => {
             <FooterLink />
             {/* Social Media Icons */}
             <div className="flex gap-6">
-              <SocialIcon href="mailto:info@indosehatmedika.com" icon={<FiMail />} label="Email" />
-              <SocialIcon href="tel:+62000000000" icon={<FiPhone />} label="Phone" />
-              <SocialIcon href="https://instagram.com/indosehatmedika" icon={<FiInstagram />} label="Instagram" />
+              <SocialIcons href="mailto:info@indosehatmedika.com" icon={<FiMail />} label="Email" />
+              <SocialIcons href="tel:+62000000000" icon={<FiPhone />} label="Phone" />
+              <SocialIcons href="https://instagram.com/indosehatmedika" icon={<FiInstagram />} label="Instagram" />
             </div>
         </div>
       </footer>

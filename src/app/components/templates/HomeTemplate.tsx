@@ -1,12 +1,5 @@
 import React from 'react';
-import { Navbar } from '../organisms/Navbar';
-import { Hero } from '../organisms/Hero';
-import { WhatWeSeek } from '../organisms/WhatWeSeek';
-import { Footer } from '../organisms/Footer';
-import { ContactUs } from '../organisms/ContactUs';
-import Team from '../organisms/Team';
-import { WhatWeDo } from '../organisms/WhatWeDo';
-import { Carousel } from '../organisms/Carousel';
+import { Carousel, ContactUs, Footer, Hero, Navbar, Team, WhatWeDo, WhatWeSeek } from '../organisms';
 
 interface HomeTemplateProps {
   title?: string;

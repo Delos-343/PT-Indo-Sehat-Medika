@@ -1,9 +1,7 @@
 'use client';
 
 import React from 'react';
-import { BadgeNumber } from '../../atoms/what_we_do/BadgeNumber';
-import { CaduceusIcon } from '../../atoms/what_we_do/CaduceusIcon';
-import { MedicalCrossIcon } from '../../atoms/what_we_do/MedicalCrossIcon';
+import { BadgeNumber, CaduceusIcon, MedicalCrossIcon } from '../../atoms';
 
 export type InfoCardVariant = 'lead' | 'feature' | 'small';
 

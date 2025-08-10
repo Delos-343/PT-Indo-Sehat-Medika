@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { LogoFooter } from '../../atoms/navigation/LogoFooter';
+import { LogoFooter } from '../../atoms';
 
 export const FooterLink: React.FC = () => {
 

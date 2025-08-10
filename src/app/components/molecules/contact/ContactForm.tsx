@@ -1,10 +1,7 @@
 'use client';
 
 import React, { useCallback, useMemo, useState } from 'react';
-import { ContactInput } from '../../atoms/contact/ContactInput';
-import { ContactTxtArea } from '../../atoms/contact/ContactTxtArea';
-import { ContactCheckbox } from '../../atoms/contact/ContactCheckbox';
-import { ContactBtn } from '../../atoms/contact/ContactBtn';
+import { ContactBtn, ContactCheckbox, ContactInput, ContactTxtArea } from '../../atoms';
 
 type FormState = {
   firstName: string;

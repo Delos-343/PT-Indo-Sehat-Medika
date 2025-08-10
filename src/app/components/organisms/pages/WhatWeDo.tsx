@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { FiPlus } from 'react-icons/fi';
-import { InfoCard } from '../molecules/what_we_do/InfoCard';
-import { HexRow } from '../molecules/what_we_do/HexRow';
-import { WHAT_WE_DO_CARDS } from './data/doCards';
+import { InfoCard } from '../../molecules/what_we_do/InfoCard';
+import { HexRow } from '../../molecules/what_we_do/HexRow';
+import { WHAT_WE_DO_CARDS } from '../data/doCards';
 
 export const WhatWeDo: React.FC = () => {
 

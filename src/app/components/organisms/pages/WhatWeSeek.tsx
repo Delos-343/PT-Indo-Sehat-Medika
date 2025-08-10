@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { SeekCard } from '../molecules/what_we_seek/SeekCard';
-import data from './data/seekCards.json'; // adjust relative path if needed
+import { SeekCard } from '../../molecules/what_we_seek/SeekCard';
+import data from '../data/seekCards.json'; // adjust relative path if needed
 
 type CardItem = {
   title: string;

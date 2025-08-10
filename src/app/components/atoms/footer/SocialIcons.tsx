@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-interface SocialIconProps {
+interface SocialIconsProps {
   href: string;
   icon: React.ReactNode;
   label: string;
 }
 
-export const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, label }) => (
+export const SocialIcons: React.FC<SocialIconsProps> = ({ href, icon, label }) => (
     <>
         <a
             href={href}

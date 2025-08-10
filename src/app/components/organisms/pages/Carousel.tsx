@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { CAROUSEL_IMAGES } from './data/slideCards';
-import { CarouselSlide } from '../molecules/carousel/CarouselSlide';
-import { CarouselArrow } from '../atoms/carousel/CarouselArrow';
-import { CarouselDot } from '../atoms/carousel/CarouselDot';
+import { CAROUSEL_IMAGES } from '../data/slideCards';
+import { CarouselSlide } from '../../molecules/carousel/CarouselSlide';
+import { CarouselArrow } from '../../atoms/carousel/CarouselArrow';
+import { CarouselDot } from '../../atoms/carousel/CarouselDot';
 
 export const Carousel: React.FC = () => {
   const slides = CAROUSEL_IMAGES;

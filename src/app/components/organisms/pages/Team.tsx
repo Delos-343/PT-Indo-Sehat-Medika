@@ -1,7 +1,7 @@
 "use client";
 
-import { data } from "./data/teamCards";
-import TeamCard from "../molecules/team/TeamCard";
+import { data } from "../data/teamCards";
+import TeamCard from "../../molecules/team/TeamCard";
 
 export default function Team() {
   return (
