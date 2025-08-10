@@ -1,7 +1,14 @@
 'use client';
 
 import React, { useRef, useEffect } from 'react';
-import { motion, useAnimation, Variants, useReducedMotion } from 'framer-motion';
+import {
+  motion,
+  useAnimation,
+  Variants,
+  useReducedMotion,
+  Transition,
+  Target
+} from 'framer-motion';
 
 type AnimationKey =
   | 'fade-up'
@@ -26,21 +33,28 @@ type Props = React.PropsWithChildren<{
   direction?: 'ltr' | 'rtl';
 }>;
 
-const BASE_VARIANTS: Record<AnimationKey, Variants> = {
+/**
+ * Base variant resolvers — return only a Target (no transition).
+ * Use concrete types from framer-motion so returned objects match expectations.
+ */
+const BASE_VARIANTS: Record<
+  AnimationKey,
+  { hidden: (custom?: number) => Target; visible: (custom?: number) => Target }
+> = {
   'fade-up': {
-    hidden: (i = 0) => ({ opacity: 0, y: 120 * i, scale: 0.99 }),
-    visible: (i = 0) => ({ opacity: 1, y: 0, scale: 1 })
+    hidden: (custom = 0) => ({ opacity: 0, y: 120 * custom, scale: 0.99 }),
+    visible: () => ({ opacity: 1, y: 0, scale: 1 })
   },
   'fade-down': {
-    hidden: (i = 0) => ({ opacity: 0, y: -120 * i, scale: 0.99 }),
-    visible: (i = 0) => ({ opacity: 1, y: 0, scale: 1 })
+    hidden: (custom = 0) => ({ opacity: 0, y: -120 * custom, scale: 0.99 }),
+    visible: () => ({ opacity: 1, y: 0, scale: 1 })
   },
   'fade-left': {
-    hidden: (_i = 1) => ({ opacity: 0, x: -140, rotateZ: -2 }),
+    hidden: () => ({ opacity: 0, x: -140, rotateZ: -2 }),
     visible: () => ({ opacity: 1, x: 0, rotateZ: 0 })
   },
   'fade-right': {
-    hidden: (_i = 1) => ({ opacity: 0, x: 140, rotateZ: 2 }),
+    hidden: () => ({ opacity: 0, x: 140, rotateZ: 2 }),
     visible: () => ({ opacity: 1, x: 0, rotateZ: 0 })
   },
   'zoom-in': {
@@ -65,27 +79,58 @@ const BASE_VARIANTS: Record<AnimationKey, Variants> = {
   }
 };
 
-function makeVariants(animation: AnimationKey, intensity: number, direction: 'ltr' | 'rtl') {
-
+/**
+ * Build Variants from the base variant targets while applying intensity and RTL flipping.
+ * Ensure returned objects are valid `Target` objects (no `undefined` property values).
+ */
+function makeVariants(animation: AnimationKey, intensity: number, direction: 'ltr' | 'rtl'): Variants {
+  
   const base = BASE_VARIANTS[animation];
+
+  const scaleNumber = (n: number) => n * Math.max(1, intensity);
+
+  const toTarget = (src: Target, applyScale = true): Target => {
+    // Build in a plain indexable record to avoid TS indexing issues, then cast to Target
+    const outRecord: Record<string, unknown> = {};
+
+    Object.entries(src).forEach(([k, v]) => {
+
+      if (v === undefined) return; // skip undefined values
+
+      let value: unknown = v;
+
+      // RTL adjustments
+      if (direction === 'rtl') {
+        if (k === 'x' && typeof v === 'number') {
+          value = -Math.abs(v as number);
+        } else if (k === 'left' && typeof v === 'number') {
+          value = -Math.abs(v as number);
+        } else if (k === 'rotateZ' && typeof v === 'number') {
+          value = -(v as number);
+        }
+      }
+
+      // Scale numeric transform values (but not opacity)
+      if (applyScale && typeof value === 'number' && k !== 'opacity') {
+        value = scaleNumber(value as number);
+      }
+
+      outRecord[k] = value;
+    });
+
+    // Cast at the boundary to framer-motion's Target
+    return outRecord as Target;
+  };
 
   const variants: Variants = {
     hidden: (custom = 0) => {
-      const v = (base.hidden as any)(custom);
-      if (direction === 'rtl') {
-        if (v && typeof v.x === 'number') v.x = Math.abs(v.x) * -1;
-        if (v && typeof v.rotateZ === 'number') v.rotateZ = -v.rotateZ;
-      }
-      Object.keys(v || {}).forEach((k) => {
-        if (typeof (v as any)[k] === 'number' && k !== 'opacity') {
-          (v as any)[k] = (v as any)[k] * Math.max(1, intensity);
-        }
-      });
-      return v;
+      const src = base.hidden ? base.hidden(custom) : {};
+      return toTarget(src, true);
     },
+
     visible: (custom = 0) => {
-      const v = (base.visible as any)(custom);
-      return v;
+      const src = base.visible ? base.visible(custom) : {};
+      return toTarget(src, false);
     }
   };
 
@@ -109,32 +154,23 @@ export default function AnimateOnScroll({
   const ref = useRef<HTMLDivElement | null>(null);
   const prefersReduced = useReducedMotion();
 
-  if (prefersReduced) {
-    return <div className={className}>{children}</div>;
-  }
-
+  // Hooks must run unconditionally; do an early return inside effect for reduced motion.
   useEffect(() => {
+
+    if (prefersReduced) return;
 
     let didAnimate = false;
 
     const observer = new IntersectionObserver(
-
       (entries) => {
-
         const entry = entries[0];
-
         if (!entry) return;
 
         if (entry.isIntersecting) {
-
           if (once && didAnimate) return;
-
           didAnimate = true;
-
           controls.start('visible').catch(() => {});
-
           if (once) observer.disconnect();
-          
         } else {
           if (!once) controls.start('hidden').catch(() => {});
         }
@@ -144,14 +180,20 @@ export default function AnimateOnScroll({
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [controls, offset, once, threshold]);
+  }, [controls, offset, once, threshold, prefersReduced]);
+
+  // If user prefers reduced motion, render children plainly.
+  if (prefersReduced) {
+    return <div className={className}>{children}</div>;
+  }
 
   const items = React.Children.toArray(children);
   const variants = makeVariants(animation, intensity, direction);
 
-  const commonTransition = (index: number) => ({
+  // Use framer-motion's Transition type — this is what the `transition` prop expects.
+  const commonTransition = (index: number): Transition => ({
     delay: delay + index * Math.max(0.06, intensity * 0.06),
-    type: 'spring' as const,
+    type: 'spring',
     damping: 18 - Math.min(8, intensity * 3),
     stiffness: 80 + (intensity - 1) * 40,
     mass: 0.8,
@@ -160,18 +202,20 @@ export default function AnimateOnScroll({
 
   if (items.length === 1) {
     return (
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={controls}
-        variants={variants}
-        custom={0}
-        transition={commonTransition(0)}
-        className={className}
-        style={{ willChange: 'transform, opacity' }}
-      >
-        {items[0]}
-      </motion.div>
+      <>
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={variants}
+          custom={0}
+          transition={commonTransition(0)}
+          className={className}
+          style={{ willChange: 'transform, opacity' }}
+        >
+          {items[0]}
+        </motion.div>
+      </>
     );
   }
 

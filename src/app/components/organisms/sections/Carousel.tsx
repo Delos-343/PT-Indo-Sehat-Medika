@@ -106,7 +106,7 @@ export const Carousel: React.FC = () => {
     <>
       <section aria-label="What We Sell" className="w-full py-12 md:py-20">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] m-0 sm:mb-24 text-center md:text-left">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] m-0 sm:mb-24 text-center md:text-right">
             What We <span className="text-[var(--color-primary)]"> Sell </span>
           </h2>
 

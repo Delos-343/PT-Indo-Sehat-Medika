@@ -12,7 +12,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   value,
   onChange,
   placeholder = 'Search . . .',
-  className = '',
+  className = 'text-[var(--color-primary)] mx-3 w-full bg-transparent text-sm placeholder-gray-400 outline-none',
 }) => {
   return (
     <>
@@ -21,8 +21,10 @@ export const SearchInput: React.FC<SearchInputProps> = ({
           <FiSearch className="bg-[var(--color-primary)] text-lg text-[var(--color-bg-primary)] flex-shrink-0 p-2 rounded-full" size={30} />
           <input
             type="search"
-            placeholder="Search . . ."
-            className="ml-2 w-full bg-transparent text-sm text-[var(--color-primary)] placeholder-gray-400 outline-none"
+            value={value}
+            placeholder={placeholder}
+            className={className}
+            onChange={onChange}
           />
         </div>
       </div>

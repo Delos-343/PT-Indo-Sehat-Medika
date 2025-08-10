@@ -5,10 +5,10 @@ type LogoProps = {
   className?: string;
 };
 
-export const Logo: React.FC<LogoProps> = ({ className = '' }) => {
+export const Logo: React.FC<LogoProps> = ({ className = 'h-16 flex items-center px-4' }) => {
   return (
     <>
-      <div className="h-16 flex items-center px-4">
+      <div className={className}>
         <Image
           src="/logo/logo.png"
           alt="company logo"

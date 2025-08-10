@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ContactBtn, ContactCheckbox, ContactInput, ContactTxtArea } from '../../atoms';
 
 type FormState = {
