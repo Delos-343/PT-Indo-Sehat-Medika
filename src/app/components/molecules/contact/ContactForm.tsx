@@ -83,7 +83,7 @@ export const ContactForm: React.FC = () => {
 
   return (
     <>
-      <form onSubmit={onSubmit} className="w-full hidden lg:block">
+      <form onSubmit={onSubmit} className="w-full hidden md:block">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
           <ContactInput id="firstName" label="* First Name" value={form.firstName} onChange={(e) => onChange('firstName', e.target.value)} />
           <ContactInput id="lastName" label="* Last Name" value={form.lastName} onChange={(e) => onChange('lastName', e.target.value)} />
