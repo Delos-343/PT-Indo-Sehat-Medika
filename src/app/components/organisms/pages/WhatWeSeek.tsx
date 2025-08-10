@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { SeekCard } from '../../molecules/what_we_seek/SeekCard';
-import data from '../data/seekCards.json'; // adjust relative path if needed
+import data from '../data/seekCards.json';
 import { StaggerOnScroll } from '../../atoms';
+import { motion } from 'framer-motion';
 
 type CardItem = {
   title: string;
@@ -21,9 +22,14 @@ export const WhatWeSeek: React.FC = () => {
     <>
       <section className="w-full py-20 bg-transparent">
         <div className="w-full mx-auto px-6 lg:px-0">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-left">
+          <motion.h2
+                    className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-left"
+                    initial={{ opacity: 0, x: 0 }}
+                    whileInView={{ opacity: 1, x: 24 }}
+                    viewport={{ once: true, amount: 0.2 }}
+            >
             What We <span className="text-[var(--color-primary)]"> Seek </span>
-          </h2>
+          </motion.h2>
           <StaggerOnScroll
             staggerDelay={0.12}   // one-by-one timing
             duration={0.6}
