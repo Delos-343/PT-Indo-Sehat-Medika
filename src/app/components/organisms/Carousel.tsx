@@ -109,7 +109,7 @@ export const Carousel: React.FC = () => {
   <>
     <section aria-label="What We Sell" className="w-full py-12 md:py-20">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center md:text-left">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] m-0 sm:mb-24 text-center md:text-left">
           What We <span className="text-[var(--color-primary)]"> Sell </span>
         </h2>
         {/* Carousel viewport */}
@@ -130,7 +130,7 @@ export const Carousel: React.FC = () => {
 
             const translateX = baseX + d * spacing;
             const scale = Math.max(0.68, 1 - Math.abs(d) * 0.12);
-            
+
             const opacity = Math.max(0.18, 1 - Math.abs(d) * 0.28);
             const zIndex = 200 - Math.abs(d);
             const blur = Math.min(6, Math.abs(d) * 2);
