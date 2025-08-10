@@ -41,7 +41,7 @@ export const WhatWeSeek: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             variants={headingVariants}
           >
-            What We <span className="text-[var(--color-primary)]"> Seek </span>
+            What We <span className="text-[var(--color-primary)]">Seek</span>
           </motion.h2>
 
           <StaggerOnScroll

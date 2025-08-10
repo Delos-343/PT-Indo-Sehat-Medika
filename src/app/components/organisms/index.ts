@@ -1,11 +1,11 @@
-import { Carousel } from "./pages/Carousel"
-import { ContactUs } from "./pages/ContactUs"
-import { Footer } from "./pages/Footer"
-import { Hero } from "./pages/Hero"
-import { Navbar } from "./pages/Navbar"
-import Team from "./pages/Team"
-import { WhatWeDo } from "./pages/WhatWeDo"
-import { WhatWeSeek } from "./pages/WhatWeSeek"
+import { Carousel } from "./sections/Carousel"
+import { ContactUs } from "./sections/ContactUs"
+import { Footer } from "./sections/Footer"
+import { Hero } from "./sections/Hero"
+import { Navbar } from "./sections/Navbar"
+import Team from "./sections/Team"
+import { WhatWeDo } from "./sections/WhatWeDo"
+import { WhatWeSeek } from "./sections/WhatWeSeek"
 
 export {
     Carousel,
