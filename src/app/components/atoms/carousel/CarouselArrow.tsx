@@ -19,7 +19,7 @@ export const CarouselArrow: React.FC<CarouselArrowProps> = ({ dir, onClick, clas
             aria-label={label ?? (dir === 'left' ? 'Previous slide' : 'Next slide')}
             type="button"
             onClick={onClick}
-            className={`p-2 rounded-full bg-transparent hover:bg-[var(--color-primary)/5] transition-colors ${className}`}
+            className={`p-2 rounded-full bg-transparent hover:bg-[var(--color-primary)/5] transition-colors cursor-pointer ${className}`}
         >
             {dir === 'left' ? <FiChevronLeft className="text-[var(--color-primary)] text-2xl" /> : <FiChevronRight className="text-[var(--color-primary)] text-2xl" />}
         </button>
