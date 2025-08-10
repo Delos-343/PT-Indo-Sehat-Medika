@@ -13,7 +13,7 @@ export const ContactInfo: React.FC = () => {
 
   return (
     <>
-      <aside className="flex flex-col gap-8 p-6 md:p-10">
+      <aside className="flex flex-col gap-8 p-6 md:p-10 w-full">
         <div className="space-y-6">
             {items.map((it, idx) => (
               <div key={idx} className="sm:flex items-center gap-4 inline-block">
