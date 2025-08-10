@@ -21,7 +21,7 @@ export const DropDown: React.FC<DropDownProps> = ({ isOpen }) => {
     <>
         <div
             className="
-                md:hidden absolute inset-x-0 top-0
+                lg:hidden absolute inset-x-0 top-0
                 bg-[var(--color-bg-primary)] shadow-lg z-20
             "
         >
