@@ -113,7 +113,7 @@ export const Carousel: React.FC = () => {
           {/* Carousel viewport */}
           <div
             ref={containerRef}
-            className="relative w-full h-[46vh] md:h-[50vh] lg:h-[56vh] select-none overflow-hidden"
+            className="relative w-full h-[36vh] md:h-[64vh] select-none overflow-hidden"
             role="region"
             aria-roledescription="carousel"
           >
@@ -145,7 +145,6 @@ export const Carousel: React.FC = () => {
                   key={slide.id}
                   image={slide}
                   style={style}
-                  className=""
                   label={`Slide ${i + 1} of ${N} - ${slide.alt}`}
                 />
               );
