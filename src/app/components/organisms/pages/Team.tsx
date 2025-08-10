@@ -6,18 +6,18 @@ import { data } from '../data/teamCards';
 import TeamCard from '../../molecules/team/TeamCard';
 
 const headingVariants: Variants = {
-  hidden: { opacity: 0, x: 24 },
+  hidden: { opacity: 0, x: -24 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 2.0, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: (staggerDelay = 0.12) => ({
+  visible: (staggerDelay = 0.15) => ({
     opacity: 1,
     transition: {
       staggerChildren: staggerDelay,
@@ -36,6 +36,7 @@ const childVariants: Variants = {
       type: 'spring',
       damping: 20,
       stiffness: 100,
+      mass: 1,
     },
   },
 };
@@ -80,7 +81,7 @@ export default function Team() {
       <section className="w-full bg-transparent">
         <div className="container mx-auto px-4">
           <motion.h2
-            className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-right"
+            className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-left"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}

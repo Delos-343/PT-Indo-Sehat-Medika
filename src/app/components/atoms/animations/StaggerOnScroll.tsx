@@ -23,12 +23,17 @@ const containerVariants: Variants = {
 };
 
 const childVariants: Variants = {
-  hidden: { opacity: 0, y: 24, scale: 0.98 },
+  hidden: { opacity: 0, x: 24, scale: 0.98 },
   visible: {
     opacity: 1,
-    y: 0,
+    x: 0,
     scale: 1,
-    transition: { type: 'spring', damping: 20, stiffness: 100 },
+    transition: {
+      type: 'spring',
+      damping: 20,
+      stiffness: 100,
+      mass: 1,
+    },
   },
 };
 

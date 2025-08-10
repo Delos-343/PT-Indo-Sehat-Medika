@@ -21,13 +21,13 @@ const headingVariants: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 2.0, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
 
 export const WhatWeSeek: React.FC = () => {
-  
+
   const list = data as CardItem[];
 
   return (
