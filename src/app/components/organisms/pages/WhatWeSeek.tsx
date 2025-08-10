@@ -15,17 +15,22 @@ type CardItem = {
 };
 
 export const WhatWeSeek: React.FC = () => {
-  
   const list = data as CardItem[];
 
   return (
-    <StaggerOnScroll staggerDelay={1.0} duration={0.5} once>
+    <>
       <section className="w-full py-20 bg-transparent">
         <div className="w-full mx-auto px-6 lg:px-0">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-left">
             What We <span className="text-[var(--color-primary)]"> Seek </span>
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <StaggerOnScroll
+            staggerDelay={0.12}   // one-by-one timing
+            duration={0.6}
+            offset={120}
+            once
+            className="!grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
+          >
             {list.map((item) => (
               <SeekCard
                 key={item.title}
@@ -37,9 +42,11 @@ export const WhatWeSeek: React.FC = () => {
                 imageHeight={item.imageHeight}
               />
             ))}
-          </div>
+          </StaggerOnScroll>
         </div>
       </section>
-    </StaggerOnScroll>
+    </>
   );
 };
+
+export default WhatWeSeek;
