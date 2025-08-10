@@ -36,19 +36,19 @@ export const Navbar: React.FC = () => {
               className="text-[var(--color-primary-dark)]"
             />
             <NavigationLink
-              href="/about"
+              href="/"
               label="About Us"
               icon={<FiCheckCircle className="text-[var(--color-primary)] text-lg" />}
               className="text-[var(--color-primary)]"
             />
             <NavigationLink
-              href="/services"
+              href="/"
               label="Our Services"
               icon={<FiChevronDown className="text-[var(--color-primary)] text-lg" />}
               className="text-[var(--color-primary)]"
             />
             <NavigationLink
-              href="/login"
+              href="/"
               label="Login"
               icon={<FiUser className="text-[var(--color-primary)] text-lg" />}
               className="text-[var(--color-primary)]"
