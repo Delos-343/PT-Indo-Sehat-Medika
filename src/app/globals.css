@@ -6,6 +6,12 @@
   --color-primary-dark: #0F4B8A;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .motion-reduce {
+    transition: none !important;
+    animation: none !important;
+  }
+}
 
 @theme inline {
   --font-raleway: var(--font-raleway);
