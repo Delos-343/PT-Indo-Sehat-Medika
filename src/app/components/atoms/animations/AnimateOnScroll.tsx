@@ -1,160 +1,197 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useAnimation, Variants } from 'framer-motion';
+import React, { useRef, useEffect } from 'react';
+import { motion, useAnimation, Variants, useReducedMotion } from 'framer-motion';
 
-interface AnimateOnScrollProps {
-  children: React.ReactNode;
-  animation?:
-    | 'fade-up'
-    | 'fade-down'
-    | 'fade-left'
-    | 'fade-right'
-    | 'zoom-in'
-    | 'zoom-out'
-    | 'rotate-fade'
-    | 'flip'
-    | 'skew-up';
+type AnimationKey =
+  | 'fade-up'
+  | 'fade-down'
+  | 'fade-left'
+  | 'fade-right'
+  | 'zoom-in'
+  | 'zoom-out'
+  | 'rotate-fade'
+  | 'flip'
+  | 'skew-up';
+
+type Props = React.PropsWithChildren<{
+  animation?: AnimationKey;
   duration?: number;
+  delay?: number;
+  intensity?: number;
   offset?: number;
   once?: boolean;
-  delay?: number;
-}
+  threshold?: number;
+  className?: string;
+  direction?: 'ltr' | 'rtl';
+}>;
 
-const animationVariants: Record<string, Variants> = {
+const BASE_VARIANTS: Record<AnimationKey, Variants> = {
   'fade-up': {
-    hidden: { opacity: 0, y: 150, scale: 0.98 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { type: 'spring', stiffness: 50, damping: 15 }
-    }
+    hidden: (i = 0) => ({ opacity: 0, y: 120 * i, scale: 0.99 }),
+    visible: (i = 0) => ({ opacity: 1, y: 0, scale: 1 })
   },
   'fade-down': {
-    hidden: { opacity: 0, y: -150, scale: 0.98 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { type: 'spring', stiffness: 50, damping: 15 }
-    }
+    hidden: (i = 0) => ({ opacity: 0, y: -120 * i, scale: 0.99 }),
+    visible: (i = 0) => ({ opacity: 1, y: 0, scale: 1 })
   },
   'fade-left': {
-    hidden: { opacity: 0, x: -180, rotateZ: -2 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      rotateZ: 0,
-      transition: { type: 'spring', stiffness: 60, damping: 18 }
-    }
+    hidden: (_i = 1) => ({ opacity: 0, x: -140, rotateZ: -2 }),
+    visible: () => ({ opacity: 1, x: 0, rotateZ: 0 })
   },
   'fade-right': {
-    hidden: { opacity: 0, x: 180, rotateZ: 2 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      rotateZ: 0,
-      transition: { type: 'spring', stiffness: 60, damping: 18 }
-    }
+    hidden: (_i = 1) => ({ opacity: 0, x: 140, rotateZ: 2 }),
+    visible: () => ({ opacity: 1, x: 0, rotateZ: 0 })
   },
   'zoom-in': {
-    hidden: { opacity: 0, scale: 0.85, rotate: -2 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      rotate: 0,
-      transition: { type: 'spring', stiffness: 70, damping: 15 }
-    }
+    hidden: () => ({ opacity: 0, scale: 0.8, rotate: -4 }),
+    visible: () => ({ opacity: 1, scale: 1, rotate: 0 })
   },
   'zoom-out': {
-    hidden: { opacity: 0, scale: 1.15, rotate: 2 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      rotate: 0,
-      transition: { type: 'spring', stiffness: 70, damping: 15 }
-    }
+    hidden: () => ({ opacity: 0, scale: 1.1, rotate: 3 }),
+    visible: () => ({ opacity: 1, scale: 1, rotate: 0 })
   },
   'rotate-fade': {
-    hidden: { opacity: 0, rotate: -15, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      rotate: 0,
-      scale: 1,
-      transition: { type: 'spring', stiffness: 60, damping: 16 }
-    }
+    hidden: () => ({ opacity: 0, rotate: -18, scale: 0.92 }),
+    visible: () => ({ opacity: 1, rotate: 0, scale: 1 })
   },
-  'flip': {
-    hidden: { opacity: 0, rotateY: 90 },
-    visible: {
-      opacity: 1,
-      rotateY: 0,
-      transition: { type: 'spring', stiffness: 50, damping: 14 }
-    }
+  flip: {
+    hidden: () => ({ opacity: 0, rotateY: 90 }),
+    visible: () => ({ opacity: 1, rotateY: 0 })
   },
   'skew-up': {
-    hidden: { opacity: 0, y: 40, skewY: 8 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      skewY: 0,
-      transition: { type: 'spring', stiffness: 50, damping: 15 }
-    }
+    hidden: () => ({ opacity: 0, y: 40, skewY: 8 }),
+    visible: () => ({ opacity: 1, y: 0, skewY: 0 })
   }
 };
 
-const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
+function makeVariants(animation: AnimationKey, intensity: number, direction: 'ltr' | 'rtl') {
+
+  const base = BASE_VARIANTS[animation];
+
+  const variants: Variants = {
+    hidden: (custom = 0) => {
+      const v = (base.hidden as any)(custom);
+      if (direction === 'rtl') {
+        if (v && typeof v.x === 'number') v.x = Math.abs(v.x) * -1;
+        if (v && typeof v.rotateZ === 'number') v.rotateZ = -v.rotateZ;
+      }
+      Object.keys(v || {}).forEach((k) => {
+        if (typeof (v as any)[k] === 'number' && k !== 'opacity') {
+          (v as any)[k] = (v as any)[k] * Math.max(1, intensity);
+        }
+      });
+      return v;
+    },
+    visible: (custom = 0) => {
+      const v = (base.visible as any)(custom);
+      return v;
+    }
+  };
+
+  return variants;
+}
+
+export default function AnimateOnScroll({
   children,
   animation = 'fade-up',
-  duration = 600,
-  offset = 100,
+  duration = 0.6,
+  delay = 0.08,
+  intensity = 1,
+  offset = 120,
   once = false,
-  delay = 0.2
-}) => {
+  threshold = 0.1,
+  className,
+  direction = 'ltr'
+}: Props) {
 
   const controls = useAnimation();
-  const ref = useRef<HTMLDivElement>(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const prefersReduced = useReducedMotion();
+
+  if (prefersReduced) {
+    return <div className={className}>{children}</div>;
+  }
 
   useEffect(() => {
+
+    let didAnimate = false;
+
     const observer = new IntersectionObserver(
-      ([entry]) => {
+
+      (entries) => {
+
+        const entry = entries[0];
+
+        if (!entry) return;
+
         if (entry.isIntersecting) {
-          controls.start('visible');
-          if (once) setHasAnimated(true);
-        } else if (!once) {
-          controls.start('hidden');
+
+          if (once && didAnimate) return;
+
+          didAnimate = true;
+
+          controls.start('visible').catch(() => {});
+
+          if (once) observer.disconnect();
+          
+        } else {
+          if (!once) controls.start('hidden').catch(() => {});
         }
       },
-      { threshold: 0.1, rootMargin: `0px 0px -${offset}px 0px` }
+      { threshold, rootMargin: `0px 0px -${offset}px 0px` }
     );
 
     if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [controls, offset, once, threshold]);
 
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, [controls, offset, once]);
+  const items = React.Children.toArray(children);
+  const variants = makeVariants(animation, intensity, direction);
 
-  return (
-    <>
+  const commonTransition = (index: number) => ({
+    delay: delay + index * Math.max(0.06, intensity * 0.06),
+    type: 'spring' as const,
+    damping: 18 - Math.min(8, intensity * 3),
+    stiffness: 80 + (intensity - 1) * 40,
+    mass: 0.8,
+    duration: Math.max(0.3, duration)
+  });
+
+  if (items.length === 1) {
+    return (
       <motion.div
         ref={ref}
         initial="hidden"
-        animate={hasAnimated ? 'visible' : controls}
-        variants={animationVariants[animation]}
-        transition={{
-          duration: duration / 1000,
-          delay,
-          ease: [0.25, 0.1, 0.25, 1] // Smooth cubic-bezier
-        }}
+        animate={controls}
+        variants={variants}
+        custom={0}
+        transition={commonTransition(0)}
+        className={className}
         style={{ willChange: 'transform, opacity' }}
       >
-        {children}
+        {items[0]}
       </motion.div>
+    );
+  }
+
+  return (
+    <>
+      <div ref={ref} className={className} style={{ display: 'contents' }}>
+        {items.map((child, i) => (
+          <motion.div
+            key={i}
+            initial="hidden"
+            animate={controls}
+            variants={variants}
+            custom={i}
+            transition={commonTransition(i)}
+            style={{ willChange: 'transform, opacity' }}
+          >
+            {child}
+          </motion.div>
+        ))}
+      </div>
     </>
   );
-};
-
-export default AnimateOnScroll;
+}
