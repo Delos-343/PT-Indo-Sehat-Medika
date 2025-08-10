@@ -6,6 +6,7 @@ import { Footer } from '../organisms/Footer';
 import { ContactUs } from '../organisms/ContactUs';
 import Team from '../organisms/Team';
 import { WhatWeDo } from '../organisms/WhatWeDo';
+import { Carousel } from '../organisms/Carousel';
 
 interface HomeTemplateProps {
   title?: string;
@@ -25,6 +26,7 @@ export const HomeTemplate: React.FC<HomeTemplateProps> = ({
           <WhatWeSeek />
           <WhatWeDo />
           <Team />
+          <Carousel />
           <ContactUs />
           <Footer />
         </main>
