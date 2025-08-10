@@ -115,7 +115,7 @@ export const Carousel: React.FC = () => {
         {/* Carousel viewport */}
         <div
           ref={containerRef}
-          className="relative w-full h-[46vh] md:h-[50vh] lg:h-[56vh] select-none"
+          className="relative w-full h-[46vh] md:h-[50vh] lg:h-[56vh] select-none overflow-ellipsis"
           role="region"
           aria-roledescription="carousel"
         >
