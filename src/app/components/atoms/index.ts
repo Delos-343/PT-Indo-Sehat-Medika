@@ -1,4 +1,5 @@
 import AnimateOnScroll from "./animations/AnimateOnScroll";
+import StaggerOnScroll from "./animations/StaggerOnScroll";
 
 import { CarouselArrow } from "./carousel/CarouselArrow";
 import { CarouselDot } from "./carousel/CarouselDot";
@@ -23,6 +24,7 @@ import { CardTitle } from "./what_we_seek/CardTitle";
 
 export {
     AnimateOnScroll,
+    StaggerOnScroll,
     CarouselArrow,
     CarouselDot,
     ContactBtn,

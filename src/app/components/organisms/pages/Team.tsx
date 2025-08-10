@@ -2,10 +2,11 @@
 
 import { data } from "../data/teamCards";
 import TeamCard from "../../molecules/team/TeamCard";
+import { StaggerOnScroll } from "../../atoms";
 
 export default function Team() {
   return (
-    <>
+    <StaggerOnScroll staggerDelay={1.0} duration={0.5} once>
         <section className="w-full bg-transparent">
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-right">
@@ -23,6 +24,6 @@ export default function Team() {
                 </div>
             </div>
         </section>
-    </>
+    </StaggerOnScroll>
   );
 }

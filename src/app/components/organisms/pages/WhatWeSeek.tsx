@@ -3,6 +3,7 @@
 import React from 'react';
 import { SeekCard } from '../../molecules/what_we_seek/SeekCard';
 import data from '../data/seekCards.json'; // adjust relative path if needed
+import { StaggerOnScroll } from '../../atoms';
 
 type CardItem = {
   title: string;
@@ -18,7 +19,7 @@ export const WhatWeSeek: React.FC = () => {
   const list = data as CardItem[];
 
   return (
-    <>
+    <StaggerOnScroll staggerDelay={1.0} duration={0.5} once>
       <section className="w-full py-20 bg-transparent">
         <div className="w-full mx-auto px-6 lg:px-0">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-left">
@@ -39,6 +40,6 @@ export const WhatWeSeek: React.FC = () => {
           </div>
         </div>
       </section>
-    </>
+    </StaggerOnScroll>
   );
 };

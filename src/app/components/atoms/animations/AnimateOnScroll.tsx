@@ -23,7 +23,7 @@ interface AnimateOnScrollProps {
 
 const animationVariants: Record<string, Variants> = {
   'fade-up': {
-    hidden: { opacity: 0, y: 50, scale: 0.98 },
+    hidden: { opacity: 0, y: 150, scale: 0.98 },
     visible: {
       opacity: 1,
       y: 0,
@@ -32,7 +32,7 @@ const animationVariants: Record<string, Variants> = {
     }
   },
   'fade-down': {
-    hidden: { opacity: 0, y: -50, scale: 0.98 },
+    hidden: { opacity: 0, y: -150, scale: 0.98 },
     visible: {
       opacity: 1,
       y: 0,
@@ -41,7 +41,7 @@ const animationVariants: Record<string, Variants> = {
     }
   },
   'fade-left': {
-    hidden: { opacity: 0, x: -80, rotateZ: -2 },
+    hidden: { opacity: 0, x: -180, rotateZ: -2 },
     visible: {
       opacity: 1,
       x: 0,
@@ -50,7 +50,7 @@ const animationVariants: Record<string, Variants> = {
     }
   },
   'fade-right': {
-    hidden: { opacity: 0, x: 80, rotateZ: 2 },
+    hidden: { opacity: 0, x: 180, rotateZ: 2 },
     visible: {
       opacity: 1,
       x: 0,
