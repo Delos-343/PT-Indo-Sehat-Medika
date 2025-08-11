@@ -145,9 +145,8 @@ export const Carousel: React.FC = () => {
       // Legacy listener: some older browsers invoke addListener/removeListener with a MediaQueryList
       // We'll create a function that accepts either shape and normalize it. We cast when attaching
       // because older DOM typings are incompatible with the newer event signature.
-      let legacyListener: ((this: MediaQueryList, ev: MediaQueryListEvent | MediaQueryList) => void) | undefined;
-      legacyListener = function (this: MediaQueryList, ev: MediaQueryListEvent | MediaQueryList) {
-        const matches = (ev as any)?.matches ?? mq.matches;
+      const legacyListener = function (this: MediaQueryList, ev: MediaQueryListEvent | MediaQueryList) {
+        const matches = ('matches' in ev ? ev.matches : mq.matches);
         setReduceMotion(Boolean(matches));
       };
 
@@ -155,15 +154,16 @@ export const Carousel: React.FC = () => {
       setReduceMotion(mq.matches);
 
       if (typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
+      
       else if (typeof mq.addListener === 'function' && legacyListener) {
         // cast to any to satisfy legacy DOM typings
-        (mq as any).addListener(legacyListener);
+        (mq as unknown as { addListener(listener: (this: MediaQueryList, ev: MediaQueryListEvent) => void): void }).addListener(legacyListener);
       }
 
       return () => {
         if (typeof mq.removeEventListener === 'function') mq.removeEventListener('change', handler);
         else if (typeof mq.removeListener === 'function' && legacyListener) {
-          (mq as any).removeListener(legacyListener);
+          (mq as unknown as { addListener(listener: (this: MediaQueryList, ev: MediaQueryListEvent) => void): void }).addListener(legacyListener);
         }
       };
     } catch {
@@ -301,7 +301,7 @@ export const Carousel: React.FC = () => {
                     cursor: d === 0 ? 'auto' : 'default',
                     willChange: 'transform, opacity, filter',
                   }}
-                  transformTemplate={(transformProps: any, generatedTransform: string) => {
+                  transformTemplate={(transformProps, generatedTransform) => {
                     return `translate(-50%, -50%) ${generatedTransform}`;
                   }}
                   >
