@@ -67,5 +67,3 @@ export const WhatWeSeek: React.FC = () => {
     </>
   );
 };
-
-export default WhatWeSeek;
