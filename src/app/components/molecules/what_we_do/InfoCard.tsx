@@ -99,7 +99,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
               {title}
             </h4>
             {subtitle && (
-              <div className="text-sm text-[var(--color-primary)]">{subtitle}</div>
+              <div className="text-sm lg:text-lg leading-relaxed text-[var(--color-primary)] max-w-prose">{subtitle}</div>
             )}
           </div>
           <div
