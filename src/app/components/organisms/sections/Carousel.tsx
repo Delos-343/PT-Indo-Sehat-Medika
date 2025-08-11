@@ -178,7 +178,7 @@ export const Carousel: React.FC = () => {
           {/* Carousel viewport */}
           <div
             ref={containerRef}
-            className="relative w-full h-[36vh] md:h-[48vh] select-none overflow-hidden"
+            className="relative w-full h-[36vh] lg:h-[48vh] select-none overflow-hidden"
             role="region"
             aria-roledescription="carousel"
             onMouseEnter={markInteraction}

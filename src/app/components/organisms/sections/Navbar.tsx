@@ -26,7 +26,7 @@ export const Navbar: React.FC = () => {
           {/* Search (always visible) */}
           <SearchInput />
           {/* Desktop Links */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-6">
             <NavigationLink
               href="/"
               label="Home"
@@ -55,7 +55,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Hamburger */}
           <button
             type="button"
-            className="md:hidden text-[var(--color-primary-dark)] text-2xl p-2 z-50"
+            className="lg:hidden text-[var(--color-primary-dark)] text-2xl p-2 z-50"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();

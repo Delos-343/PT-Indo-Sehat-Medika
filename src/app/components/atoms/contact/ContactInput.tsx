@@ -15,7 +15,7 @@ export const ContactInput = React.forwardRef<HTMLInputElement, ContactInputProps
         <>
             <div className={`w-full ${className}`}>
                 {label && (
-                    <label htmlFor={id} className="block text-sm text-[var(--color-bg-primary)] mb-2">
+                    <label htmlFor={id} className="block text-[var(--color-bg-primary)] mb-2">
                         {label}
                     </label>
                 )}
