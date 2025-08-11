@@ -17,7 +17,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({ image, style, clas
       <div
         role="group"
         aria-label={label ?? image.alt}
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform rounded-3xl max-w-full shadow-md overflow-hidden ${className}`}
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform z-50 rounded-3xl max-w-full shadow-md overflow-hidden ${className}`}
         style={{
           width: 'clamp(280px, 68vw, 920px)',
           aspectRatio: '16/8.5',

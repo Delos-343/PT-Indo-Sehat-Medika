@@ -25,8 +25,8 @@ export const Carousel: React.FC = () => {
 
   const [reduceMotion, setReduceMotion] = useState(false);
 
-  const AUTOPLAY_INTERVAL = 7000;
-  const IDLE_THRESHOLD = 3000;
+  const AUTOPLAY_INTERVAL = 5000;
+  const IDLE_THRESHOLD = 2500;
 
   useEffect(() => {
     const el = containerRef.current;
@@ -170,7 +170,7 @@ export const Carousel: React.FC = () => {
 
   return (
     <>
-      <section aria-label="What We Sell" className="w-full py-12 md:py-20">
+      <section aria-label="What We Sell" className="w-full py-6 mb-12 md:mb-0">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] m-0 sm:mb-24 text-center md:text-left">
             What We <span className="text-[var(--color-primary)]"> Sell </span>
@@ -178,7 +178,7 @@ export const Carousel: React.FC = () => {
           {/* Carousel viewport */}
           <div
             ref={containerRef}
-            className="relative w-full h-[36vh] md:h-[64vh] select-none overflow-hidden"
+            className="relative w-full h-[36vh] md:h-[48vh] select-none overflow-hidden"
             role="region"
             aria-roledescription="carousel"
             onMouseEnter={markInteraction}

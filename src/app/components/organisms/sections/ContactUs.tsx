@@ -7,7 +7,7 @@ import { ContactForm } from '../../molecules/contact/ContactForm';
 export const ContactUs: React.FC = () => {
   return (
     <>
-        <section className="w-full">
+        <section className="w-full my-12 sm:my-6">
             <div className="w-full mx-auto px-4 sm:px-6 lg:px-0">
                 <h2 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-primary-dark)] mb-12 text-center sm:text-right">
                     Let&apos;s Work <span className="text-[var(--color-primary)]"> Together </span>
