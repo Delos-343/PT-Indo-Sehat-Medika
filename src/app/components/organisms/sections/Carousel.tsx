@@ -7,7 +7,7 @@ import { CarouselSlide } from '../../molecules';
 import { CarouselArrow, CarouselDot } from '../../atoms';
 
 export const Carousel: React.FC = () => {
-
+  
   const slides = CAROUSEL_IMAGES;
   const N = slides.length;
 
@@ -23,7 +23,7 @@ export const Carousel: React.FC = () => {
   const isDocumentVisibleRef = useRef<boolean>(true);
   const intervalRef = useRef<number | null>(null);
 
-  const [reduceMotion, setReduceMotion] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState<boolean>(false);
 
   const AUTOPLAY_INTERVAL = 5000;
   const IDLE_THRESHOLD = 2500;
@@ -129,16 +129,29 @@ export const Carousel: React.FC = () => {
   useEffect(() => {
     try {
       const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-      setReduceMotion(mq.matches);
+
+      // modern API handler receives MediaQueryListEvent
       const handler = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
-      if (mq.addEventListener) mq.addEventListener('change', handler);
-      else mq.addListener(handler as any);
+      // legacy handler that some older browsers may call with a MediaQueryList
+      const legacyHandler = (mql: MediaQueryList) => setReduceMotion(mql.matches);
+
+      // set initial value
+      setReduceMotion(mq.matches);
+
+      if (typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
+      else if (typeof (mq as unknown as { addListener?: (l: (mql: MediaQueryList) => void) => void }).addListener === 'function') {
+        (mq as unknown as { addListener: (l: (mql: MediaQueryList) => void) => void }).addListener(legacyHandler);
+      }
+
       return () => {
-        if (mq.removeEventListener) mq.removeEventListener('change', handler);
-        else mq.removeListener(handler as any);
+        if (typeof mq.removeEventListener === 'function') mq.removeEventListener('change', handler);
+        else if (typeof (mq as unknown as { removeListener?: (l: (mql: MediaQueryList) => void) => void }).removeListener === 'function') {
+          (mq as unknown as { removeListener: (l: (mql: MediaQueryList) => void) => void }).removeListener(legacyHandler);
+        }
       };
     } catch {
       setReduceMotion(false);
+      return;
     }
   }, []);
 
@@ -167,6 +180,9 @@ export const Carousel: React.FC = () => {
   useEffect(() => {
     if (index >= slides.length) setIndex(slides.length - 1);
   }, [slides.length, index]);
+
+  // If reduceMotion is requested, disable spring animation and use instant transitions.
+  const transition = reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 120, damping: 20 } as const;
 
   return (
     <>
@@ -213,7 +229,7 @@ export const Carousel: React.FC = () => {
                     opacity,
                     filter: `blur(${blur}px)`,
                   }}
-                  transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+                  transition={transition}
                   style={{
                     position: 'absolute',
                     left: '50%',
