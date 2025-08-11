@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, ContactUs, Footer, Hero, Navbar, Team, WhatWeDo, WhatWeSeek } from '../organisms';
+import { Carousel, ContactUs, Footer, Hero, Navbar, WhatWeDo, WhatWeSeek } from '../organisms';
 
 interface HomeTemplateProps {
   title?: string;
@@ -18,7 +18,6 @@ export const HomeTemplate: React.FC<HomeTemplateProps> = ({
           <Hero title={title} />
           <WhatWeSeek />
           <WhatWeDo />
-          <Team />
           <Carousel />
           <ContactUs />
           <Footer />
