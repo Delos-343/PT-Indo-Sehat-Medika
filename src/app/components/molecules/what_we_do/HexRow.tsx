@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-export const HexRow: React.FC<{ className?: string }> = ({ className = 'translate-y-1 absolute -top-5 sm:-top-80 left-0 overflow-ellipsis' }) => {
+export const HexRow: React.FC<{ className?: string }> = ({ className = 'translate-y-1 absolute sm:-top-5 lg:-top-80 left-0 overflow-ellipsis' }) => {
   return (
     <>
       <div className={className} aria-hidden="true">

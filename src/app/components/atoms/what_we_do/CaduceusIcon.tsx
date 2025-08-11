@@ -19,7 +19,7 @@ export const CaduceusIcon: React.FC<CaduceusIconProps> = ({ className = '', aria
                 alt="" // decorative
                 width={width}
                 height={height}
-                className="w-auto h-auto object-contain"
+                className="w-auto h-auto object-contain z-0"
                 priority={false}
             />
         </div>
