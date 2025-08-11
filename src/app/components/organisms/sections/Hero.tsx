@@ -46,10 +46,10 @@ export const Hero: React.FC<HeroProps> = ({
                     bg-[var(--color-bg-primary)]
                     text-[var(--color-primary-dark)]
                     rounded-full
-                    text-xl
+                    text-3xl
                   "
                 />
-                <span className="text-lg">Produk Kesehatan Berkualitas</span>
+                <span className="text-lg"> Produk Kesehatan Berkualitas </span>
               </div>
               <div className="flex items-center gap-3">
                 <FiCloudDrizzle
@@ -58,10 +58,10 @@ export const Hero: React.FC<HeroProps> = ({
                     bg-[var(--color-bg-primary)]
                     text-[var(--color-primary-dark)]
                     rounded-full
-                    text-xl
+                    text-3xl
                   "
                 />
-                <span className="text-lg">Hidup Lebih Sehat</span>
+                <span className="text-lg"> Hidup Lebih Sehat </span>
               </div>
             </div>
             {/* Tagline + CTA row */}
@@ -72,10 +72,11 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="flex items-center gap-3 group cursor-pointer">
                 <FaArrowRight
                   className="
-                    text-xl
-                    text-[var(--color-primary)]
-                    group-hover:translate-x-1
-                    transition-transform
+                    p-2
+                    bg-[var(--color-bg-primary)]
+                    text-[var(--color-primary-dark)]
+                    rounded-full
+                    text-3xl
                   "
                 />
                 <span className="text-lg uppercase tracking-wide group-hover:underline">
