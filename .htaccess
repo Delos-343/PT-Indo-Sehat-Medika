@@ -1,0 +1,19 @@
+# .htaccess - basic security and fallback (Place inside public_html)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # serve existing files directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # otherwise route to default.php (SPA fallback)
+  RewriteRule ^ /default.php [L]
+</IfModule>
+
+# Security headers (optional)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "DENY"
+  Header set Referrer-Policy "no-referrer-when-downgrade"
+</IfModule>
