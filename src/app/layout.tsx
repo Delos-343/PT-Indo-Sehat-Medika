@@ -15,7 +15,7 @@ const popPins = Poppins({
 
 export const metadata: Metadata = {
   title: "PT INDO SEHAT MEDIKA",
-  description: "For Tante Yenny",
+  description: "Solusi Terpercaya Untuk Kesehatan Anda",
 };
 
 export default function RootLayout({
