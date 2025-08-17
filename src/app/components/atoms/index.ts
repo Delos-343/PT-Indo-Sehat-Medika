@@ -13,7 +13,7 @@ import { SocialIcons } from "./footer/SocialIcons";
 
 import { DropDown } from "./navigation/DropDown";
 import { Logo } from "./navigation/Logo";
-import { LogoFooter } from "./navigation/LogoFooter";
+import { LogoFooter } from "./footer/LogoFooter";
 import { SearchInput } from "./navigation/SearchInput";
 
 import { BadgeNumber } from "./what_we_do/BadgeNumber";
