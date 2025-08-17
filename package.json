@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview": "npx serve out -l 8000"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
