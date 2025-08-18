@@ -37,8 +37,8 @@ export const InfoCard: React.FC<InfoCardProps> = ({
           {/* Icon behind text for mobile & portrait tablet */}
           <div className="absolute inset-0 flex justify-center items-center pointer-events-none lg:hidden">
             <CaduceusIcon
-              width={343}
-              height={343}
+              width={300}
+              height={300}
               className="opacity-10"
             />
           </div>
@@ -65,8 +65,8 @@ export const InfoCard: React.FC<InfoCardProps> = ({
             {/* Right/Icon Section for desktop */}
             <div className="hidden lg:flex flex-shrink-0 justify-center items-center align-middle order-2">
               <CaduceusIcon
-                width={220}
-                height={220}
+                width={343}
+                height={343}
                 className="opacity-90 max-w-full h-auto mt-10"
               />
             </div>
