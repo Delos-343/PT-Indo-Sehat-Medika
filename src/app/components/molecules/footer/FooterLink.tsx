@@ -8,9 +8,9 @@ export const FooterLink: React.FC = () => {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About Us' },
-    { href: '/services', label: 'Our Services' },
-    { href: '/contact', label: 'Contact Us' },
+    { href: '/', label: 'About Us' },
+    { href: '/', label: 'Our Services' },
+    { href: '/', label: 'Contact Us' },
   ];
 
   return (

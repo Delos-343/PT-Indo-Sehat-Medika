@@ -14,8 +14,8 @@ export const Footer: React.FC = () => {
             <FooterLink />
             {/* Social Media Icons */}
             <div className="flex gap-6">
-              <SocialIcons href="mailto:info@indosehatmedika.com" icon={<FiMail />} label="Email" />
-              <SocialIcons href="tel:+62000000000" icon={<FiPhone />} label="Phone" />
+              <SocialIcons href="mailto:headoffice@indosehatmedika.com" icon={<FiMail />} label="Email" />
+              <SocialIcons href="tel:+6281130777773" icon={<FiPhone />} label="Phone" />
               <SocialIcons href="https://instagram.com/indosehatmedika" icon={<FiInstagram />} label="Instagram" />
             </div>
         </div>

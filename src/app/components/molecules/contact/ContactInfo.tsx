@@ -6,9 +6,9 @@ import { FiMail, FiPhone, FiInstagram } from 'react-icons/fi';
 export const ContactInfo: React.FC = () => {
 
   const items = [
-    { icon: <FiMail />, label: 'ptindosehatmedika@gmail.com' },
+    { icon: <FiMail />, label: 'headoffice@indosehatmedika.com' },
     { icon: <FiPhone />, label: '+62 811 3077 7773' },
-    { icon: <FiInstagram />, label: '@ptindosehatmedika' },
+    { icon: <FiInstagram />, label: '@ indosehatmedika' },
   ];
 
   return (
