@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { SeekCard } from '../../molecules/what_we_seek/SeekCard';
+import { SeekCard } from '../../molecules';
 import data from '../data/seekCards.json';
 import { StaggerOnScroll } from '../../atoms';
 import { motion, Variants } from 'framer-motion';

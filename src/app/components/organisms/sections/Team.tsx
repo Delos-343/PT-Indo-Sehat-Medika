@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { data } from '../data/teamCards';
-import TeamCard from '../../molecules/team/TeamCard';
+import { TeamCard } from '../../molecules';
 
 const headingVariants: Variants = {
   hidden: { opacity: 0, x: -24 },
