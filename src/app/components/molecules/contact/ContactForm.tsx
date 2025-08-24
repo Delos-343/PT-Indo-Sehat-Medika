@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useCallback, useState } from 'react';
 import { send } from '@emailjs/browser';
 import { ContactBtn, ContactInput, ContactRadio, ContactTxtArea } from '../../atoms';
@@ -42,15 +40,22 @@ export const ContactForm: React.FC = () => {
 
   // EmailJS config (env vars must exist at build time)
   const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? '';
+
   const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? '';
+
   const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? '';
 
   /** Handle field updates */
-  const onChange = useCallback(<K extends keyof FormState>(key: K, value: FormState[K]) => {
+  const onChange = useCallback((key: keyof FormState, value: string) => {
+
     setForm((s) => ({ ...s, [key]: value }));
+
     setErrors((e) => ({ ...e, [String(key)]: '' }));
+
     setSubmitError(null);
+
     setSuccess(null);
+
   }, []);
 
   /** Validate required fields */
@@ -72,12 +77,13 @@ export const ContactForm: React.FC = () => {
 
   /** Submit form via EmailJS */
   const onSubmit = useCallback(
-    
+
     async (ev?: React.FormEvent) => {
 
       ev?.preventDefault();
-      
+
       setSuccess(null);
+      
       setSubmitError(null);
 
       // honeypot check
@@ -86,15 +92,11 @@ export const ContactForm: React.FC = () => {
         return;
       }
 
-      // ensure EmailJS env vars exist
       if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-        setSubmitError(
-          'Email service is not configured. Please check NEXT_PUBLIC_EMAILJS_* environment variables.'
-        );
+        setSubmitError('Email service is not configured.');
         return;
       }
 
-      // validate inputs
       const e = validate();
       if (Object.keys(e).length) {
         setErrors(e);
@@ -102,10 +104,12 @@ export const ContactForm: React.FC = () => {
       }
 
       setLoading(true);
+
       try {
         const templateParams = {
-          name: `${form.firstName} ${form.lastName}`,
-          email: form.email,
+          from_name: `${form.firstName} ${form.lastName}`, // sender’s name
+          from_email: form.email,                         // sender’s email
+          reply_to: form.email,                           // ensures "Reply" goes to sender
           phone: `${form.countryCode} ${form.phone}`.trim(),
           subject: form.subject,
           message: form.message,
@@ -115,10 +119,10 @@ export const ContactForm: React.FC = () => {
         await send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
 
         setSuccess('Message sent. We will get back to you shortly.');
-        setForm(INITIAL_FORM); // reset form
+        setForm(INITIAL_FORM);
       } catch (err: any) {
         console.error('EmailJS send error:', err);
-        setSubmitError(err?.text || err?.message || 'Failed to send message. Please try again later.');
+        setSubmitError(err?.text || err?.message || 'Failed to send message.');
       } finally {
         setLoading(false);
       }
@@ -129,7 +133,7 @@ export const ContactForm: React.FC = () => {
   return (
     <>
       <form onSubmit={onSubmit} className="w-full text-slate-100" noValidate>
-        {/* honeypot - hidden from users */}
+        {/* honeypot */}
         <input
           type="text"
           name="hp"
@@ -140,6 +144,7 @@ export const ContactForm: React.FC = () => {
           aria-hidden
           style={{ display: 'none' }}
         />
+
         {/* Inputs grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
           <ContactInput id="firstName" label="* First Name" value={form.firstName} onChange={(e) => onChange('firstName', e.target.value)} />
@@ -171,6 +176,7 @@ export const ContactForm: React.FC = () => {
             </div>
           </div>
         </div>
+
         {/* Subject selection */}
         <fieldset className="mt-8 border-0">
           <legend className="text-sm text-slate-200 mb-3">* Select Subject</legend>
@@ -186,6 +192,7 @@ export const ContactForm: React.FC = () => {
             ))}
           </div>
         </fieldset>
+
         {/* Message */}
         <div className="mt-8">
           <ContactTxtArea
@@ -196,6 +203,7 @@ export const ContactForm: React.FC = () => {
             onChange={(e) => onChange('message', e.target.value)}
           />
         </div>
+
         {/* Errors & status */}
         <div className="mt-4">
           {Object.values(errors).map(
@@ -204,6 +212,7 @@ export const ContactForm: React.FC = () => {
           {submitError && <div role="alert" className="text-sm text-rose-400 mb-1">{submitError}</div>}
           {success && <div role="status" aria-live="polite" className="text-sm text-emerald-300">{success}</div>}
         </div>
+
         {/* Submit */}
         <div className="mt-8 flex justify-center sm:justify-end">
           <ContactBtn type="submit" disabled={loading} className="px-6 py-3">
@@ -214,5 +223,3 @@ export const ContactForm: React.FC = () => {
     </>
   );
 };
-
-export default ContactForm;
