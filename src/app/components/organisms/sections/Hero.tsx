@@ -77,7 +77,7 @@ export const Hero: React.FC<HeroProps> = ({
                 whileTap="hover"
                 className="flex items-center gap-3 group cursor-pointer"
               >
-                <Link href="#contact-us" scroll={false} className="flex items-center gap-3">
+                <Link href="#contact-us" scroll={true} className="flex items-center gap-3">
                   {/* Arrow icon */}
                   <motion.span
                     variants={{ hover: { x: 6 } }}
