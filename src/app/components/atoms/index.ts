@@ -7,6 +7,7 @@ import { CarouselDot } from "./carousel/CarouselDot";
 import { ContactBtn } from "./contact/ContactBtn";
 import { ContactCheckbox } from "./contact/ContactCheckbox";
 import { ContactInput } from "./contact/ContactInput";
+import { ContactRadio } from './contact/ContactRadio'
 import { ContactTxtArea } from "./contact/ContactTxtArea";
 
 import { SocialIcons } from "./footer/SocialIcons";
@@ -30,6 +31,7 @@ export {
     ContactBtn,
     ContactCheckbox,
     ContactInput,
+    ContactRadio,
     ContactTxtArea,
     DropDown,
     Logo,
