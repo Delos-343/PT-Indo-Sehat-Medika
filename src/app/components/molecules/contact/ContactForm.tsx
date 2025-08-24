@@ -29,10 +29,15 @@ const INITIAL_FORM: FormState = {
 };
 
 export const ContactForm: React.FC = () => {
+
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
+
   const [errors, setErrors] = useState<Record<string, string>>({});
+
   const [loading, setLoading] = useState(false);
+
   const [success, setSuccess] = useState<string | null>(null);
+
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   // EmailJS config (env vars must exist at build time)
@@ -61,7 +66,9 @@ export const ContactForm: React.FC = () => {
   /** Submit form via EmailJS */
   const onSubmit = useCallback(
     async (ev?: React.FormEvent) => {
+
       ev?.preventDefault();
+      
       setSuccess(null);
       setSubmitError(null);
 
@@ -199,7 +206,7 @@ export const ContactForm: React.FC = () => {
         <ContactTxtArea
           id="message"
           label="* Message"
-          placeholder="Write your message..."
+          placeholder="Write your message . . ."
           value={form.message}
           onChange={(e) => onChange('message', e.target.value)}
         />
@@ -217,7 +224,7 @@ export const ContactForm: React.FC = () => {
       {/* Submit */}
       <div className="mt-8 flex justify-center sm:justify-end">
         <ContactBtn type="submit" disabled={loading} className="px-6 py-3">
-          {loading ? 'Sending…' : 'Send Message'}
+          {loading ? 'Sending . . .' : 'Send Message'}
         </ContactBtn>
       </div>
     </form>
