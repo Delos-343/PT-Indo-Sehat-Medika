@@ -74,6 +74,7 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Motion-enabled Link */}
               <motion.div
                 whileHover="hover"
+                whileTap="hover"
                 className="flex items-center gap-3 group cursor-pointer"
               >
                 <Link href="#contact-us" scroll={false} className="flex items-center gap-3">
