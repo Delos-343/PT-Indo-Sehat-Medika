@@ -55,16 +55,24 @@ export const ContactForm: React.FC = () => {
 
   /** Validate required fields */
   const validate = useCallback(() => {
+
     const e: Record<string, string> = {};
+
     if (!form.firstName.trim()) e.firstName = 'First name is required';
+
     if (!form.lastName.trim()) e.lastName = 'Last name is required';
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Valid email required';
+
     if (!form.message.trim()) e.message = 'Please write a message';
+
     return e;
+
   }, [form]);
 
   /** Submit form via EmailJS */
   const onSubmit = useCallback(
+    
     async (ev?: React.FormEvent) => {
 
       ev?.preventDefault();
@@ -96,12 +104,12 @@ export const ContactForm: React.FC = () => {
       setLoading(true);
       try {
         const templateParams = {
-          from_name: `${form.firstName} ${form.lastName}`,
-          from_email: form.email,
+          name: `${form.firstName} ${form.lastName}`,
+          email: form.email,
           phone: `${form.countryCode} ${form.phone}`.trim(),
           subject: form.subject,
           message: form.message,
-          sent_at: new Date().toISOString(),
+          time: new Date().toISOString(),
         };
 
         await send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
@@ -118,116 +126,92 @@ export const ContactForm: React.FC = () => {
     [form, validate, SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY]
   );
 
-  /** Custom radio option */
-  const RadioOption: React.FC<{ label: string; checked: boolean; onChange: () => void }> = ({
-    label,
-    checked,
-    onChange,
-  }) => (
-    <label className="inline-flex items-center gap-3 cursor-pointer select-none">
-      <input type="radio" name="subject" value={label} checked={checked} onChange={onChange} className="sr-only" />
-      <span
-        aria-hidden
-        className={`w-7 h-7 rounded-full flex items-center justify-center transition ${
-          checked ? 'bg-white/90' : 'bg-white/10'
-        }`}
-      >
-        {checked && <span className="w-3 h-3 rounded-full bg-[#0F4A89]" />}
-      </span>
-      <span className="text-slate-100 text-sm">{label}</span>
-    </label>
-  );
-
   return (
-    <form onSubmit={onSubmit} className="w-full text-slate-100" noValidate>
-      {/* honeypot - hidden from users */}
-      <input
-        type="text"
-        name="hp"
-        value={form.hp}
-        onChange={(e) => onChange('hp', e.target.value)}
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden
-        style={{ display: 'none' }}
-      />
-
-      {/* Inputs grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-        <ContactInput id="firstName" label="* First Name" value={form.firstName} onChange={(e) => onChange('firstName', e.target.value)} />
-        <ContactInput id="lastName" label="* Last Name" value={form.lastName} onChange={(e) => onChange('lastName', e.target.value)} />
-        <ContactInput id="email" label="* Email" type="email" value={form.email} onChange={(e) => onChange('email', e.target.value)} />
-        
-        {/* Phone */}
-        <div>
-          <label htmlFor="phone" className="block text-sm text-slate-200 mb-2"> Phone Number </label>
-          <div className="flex items-center gap-3">
-            <select
-              aria-label="Country Code"
-              value={form.countryCode}
-              onChange={(e) => onChange('countryCode', e.target.value)}
-              className="bg-transparent border-b border-white/20 py-2 pr-4 outline-none text-slate-100"
-            >
-              <option value="+62">+62</option>
-              <option value="+1">+1</option>
-              <option value="+60">+60</option>
-              <option value="+44">+44</option>
-            </select>
-            <input
-              id="phone"
-              type="tel"
-              className="w-full bg-transparent border-b border-white/20 py-2 outline-none text-slate-100 placeholder:text-white/40"
-              placeholder="Phone No."
-              value={form.phone}
-              onChange={(e) => onChange('phone', e.target.value)}
-            />
+    <>
+      <form onSubmit={onSubmit} className="w-full text-slate-100" noValidate>
+        {/* honeypot - hidden from users */}
+        <input
+          type="text"
+          name="hp"
+          value={form.hp}
+          onChange={(e) => onChange('hp', e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden
+          style={{ display: 'none' }}
+        />
+        {/* Inputs grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+          <ContactInput id="firstName" label="* First Name" value={form.firstName} onChange={(e) => onChange('firstName', e.target.value)} />
+          <ContactInput id="lastName" label="* Last Name" value={form.lastName} onChange={(e) => onChange('lastName', e.target.value)} />
+          <ContactInput id="email" label="* Email" type="email" value={form.email} onChange={(e) => onChange('email', e.target.value)} />
+          {/* Phone */}
+          <div>
+            <label htmlFor="phone" className="block text-sm text-slate-200 mb-2"> Phone Number </label>
+            <div className="flex items-center gap-3">
+              <select
+                aria-label="Country Code"
+                value={form.countryCode}
+                onChange={(e) => onChange('countryCode', e.target.value)}
+                className="bg-transparent border-b border-white/20 py-2 pr-4 outline-none text-slate-100"
+              >
+                <option value="+62">+62</option>
+                <option value="+1">+1</option>
+                <option value="+60">+60</option>
+                <option value="+44">+44</option>
+              </select>
+              <input
+                id="phone"
+                type="tel"
+                className="w-full bg-transparent border-b border-white/20 py-2 outline-none text-slate-100 placeholder:text-white/40"
+                placeholder="Phone No."
+                value={form.phone}
+                onChange={(e) => onChange('phone', e.target.value)}
+              />
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Subject selection */}
-      <fieldset className="mt-8 border-0">
-        <legend className="text-sm text-slate-200 mb-3">* Select Subject</legend>
-        <div role="radiogroup" aria-label="Subject" className="flex flex-wrap gap-6">
-          {SUBJECTS.map((s) => (
-            <ContactRadio
-              key={s}
-              label={s}
-              checked={form.subject === s}
-              onChange={() => onChange('subject', s)}
-              name="subject"
-            />
-          ))}
+        {/* Subject selection */}
+        <fieldset className="mt-8 border-0">
+          <legend className="text-sm text-slate-200 mb-3">* Select Subject</legend>
+          <div role="radiogroup" aria-label="Subject" className="flex flex-wrap gap-6">
+            {SUBJECTS.map((s) => (
+              <ContactRadio
+                key={s}
+                label={s}
+                checked={form.subject === s}
+                onChange={() => onChange('subject', s)}
+                name="subject"
+              />
+            ))}
+          </div>
+        </fieldset>
+        {/* Message */}
+        <div className="mt-8">
+          <ContactTxtArea
+            id="message"
+            label="* Message"
+            placeholder="Write your message . . ."
+            value={form.message}
+            onChange={(e) => onChange('message', e.target.value)}
+          />
         </div>
-      </fieldset>
-
-      {/* Message */}
-      <div className="mt-8">
-        <ContactTxtArea
-          id="message"
-          label="* Message"
-          placeholder="Write your message . . ."
-          value={form.message}
-          onChange={(e) => onChange('message', e.target.value)}
-        />
-      </div>
-
-      {/* Errors & status */}
-      <div className="mt-4">
-        {Object.values(errors).map(
-          (msg, idx) => msg && <div key={idx} className="text-sm text-rose-400 mb-1">{msg}</div>
-        )}
-        {submitError && <div role="alert" className="text-sm text-rose-400 mb-1">{submitError}</div>}
-        {success && <div role="status" aria-live="polite" className="text-sm text-emerald-300">{success}</div>}
-      </div>
-
-      {/* Submit */}
-      <div className="mt-8 flex justify-center sm:justify-end">
-        <ContactBtn type="submit" disabled={loading} className="px-6 py-3">
-          {loading ? 'Sending . . .' : 'Send Message'}
-        </ContactBtn>
-      </div>
-    </form>
+        {/* Errors & status */}
+        <div className="mt-4">
+          {Object.values(errors).map(
+            (msg, idx) => msg && <div key={idx} className="text-sm text-rose-400 mb-1">{msg}</div>
+          )}
+          {submitError && <div role="alert" className="text-sm text-rose-400 mb-1">{submitError}</div>}
+          {success && <div role="status" aria-live="polite" className="text-sm text-emerald-300">{success}</div>}
+        </div>
+        {/* Submit */}
+        <div className="mt-8 flex justify-center sm:justify-end">
+          <ContactBtn type="submit" disabled={loading} className="px-6 py-3">
+            {loading ? 'Sending . . .' : 'Send Message'}
+          </ContactBtn>
+        </div>
+      </form>
+    </>
   );
 };
 
