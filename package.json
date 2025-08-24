@@ -10,6 +10,7 @@
     "preview": "npx serve out -l 8000"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.23.12",
     "next": "15.4.6",
     "react": "19.1.0",
