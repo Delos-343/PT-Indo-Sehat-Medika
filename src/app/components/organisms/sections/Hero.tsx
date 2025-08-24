@@ -4,6 +4,8 @@ import React from 'react';
 import { BsHeartPulse } from 'react-icons/bs';
 import { FiCloudDrizzle } from 'react-icons/fi';
 import { FaArrowRight } from 'react-icons/fa6';
+import Link from 'next/link';
+import { motion } from 'framer-motion'
 
 interface HeroProps {
   title?: string;
@@ -69,20 +71,41 @@ export const Hero: React.FC<HeroProps> = ({
               <p className="text-lg uppercase tracking-wide">
                 SOLUSI TERPERCAYA UNTUK KESEHATAN ANDA
               </p>
-              <div className="flex items-center gap-3 group cursor-pointer">
-                <FaArrowRight
-                  className="
-                    p-2
-                    bg-[var(--color-bg-primary)]
-                    text-[var(--color-primary-dark)]
-                    rounded-full
-                    text-3xl
-                  "
-                />
-                <span className="text-lg uppercase tracking-wide group-hover:underline">
-                  Book Your Consultation
-                </span>
-              </div>
+              {/* Motion-enabled Link */}
+              <motion.div
+                whileHover="hover"
+                className="flex items-center gap-3 group cursor-pointer"
+              >
+                <Link href="#contact-us" scroll={false} className="flex items-center gap-3">
+                  {/* Arrow icon */}
+                  <motion.span
+                    variants={{ hover: { x: 6 } }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="
+                      p-2
+                      bg-[var(--color-bg-primary)]
+                      text-[var(--color-primary-dark)]
+                      rounded-full
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >
+                    <FaArrowRight />
+                  </motion.span>
+
+                  {/* Text with animated underline */}
+                  <span className="relative text-lg uppercase tracking-wide">
+                    Hubungi Kita Sekarang
+                    <motion.span
+                      variants={{ hover: { width: "100%" } }}
+                      initial={{ width: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="absolute left-0 -bottom-1 h-[2px] bg-[var(--color-primary)]"
+                    />
+                  </span>
+                </Link>
+              </motion.div>
             </div>
           </div>
         </div>
