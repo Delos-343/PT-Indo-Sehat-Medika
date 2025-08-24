@@ -10,11 +10,12 @@ import { ContactInput } from "./contact/ContactInput";
 import { ContactRadio } from './contact/ContactRadio'
 import { ContactTxtArea } from "./contact/ContactTxtArea";
 
+import { LogoFooter } from "./footer/LogoFooter";
 import { SocialIcons } from "./footer/SocialIcons";
+import { LoaderSpinner } from "./loading/LoaderSpinner";
 
 import { DropDown } from "./navigation/DropDown";
 import { Logo } from "./navigation/Logo";
-import { LogoFooter } from "./footer/LogoFooter";
 import { SearchInput } from "./navigation/SearchInput";
 
 import { BadgeNumber } from "./what_we_do/BadgeNumber";
@@ -34,6 +35,7 @@ export {
     ContactRadio,
     ContactTxtArea,
     DropDown,
+    LoaderSpinner,
     Logo,
     LogoFooter,
     SearchInput,

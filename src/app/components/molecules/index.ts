@@ -5,6 +5,8 @@ import { ContactInfo } from "./contact/ContactInfo"
 
 import { FooterLink } from "./footer/FooterLink"
 
+import { LoaderFill } from "./loader/LoaderFill"
+
 import { NavigationLink } from "./navigation/NavigationLink"
 
 import TeamCard from "./team/TeamCard"
@@ -19,6 +21,7 @@ export {
     ContactForm,
     ContactInfo,
     FooterLink,
+    LoaderFill,
     NavigationLink,
     TeamCard,
     HexRow,

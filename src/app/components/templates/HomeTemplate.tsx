@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel, ContactUs, Footer, Hero, Navbar, WhatWeDo, WhatWeSeek } from '../organisms';
+import { LoadingScreen } from '../organisms/sections/LoadingScreen';
 
 interface HomeTemplateProps {
   title?: string;
@@ -15,6 +16,7 @@ export const HomeTemplate: React.FC<HomeTemplateProps> = ({
           <Navbar />
         </nav>
         <main className="w-full flex flex-col gap-[32px] row-start-2 items-center">
+          <LoadingScreen />
           <Hero title={title} />
           <WhatWeSeek />
           <WhatWeDo />
